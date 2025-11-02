@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block title %}Restaurantes · MendoTour{% endblock %}
+{% block head_extra %}
+<link rel="stylesheet" href="{{ url_for('static', filename='oferta.css') }}">
+{% endblock %}
+
+{% block content %}
+  <header class="page-hero">
+    <h1>Restaurantes</h1>
+  </header>
+
+  <section class="grid-cards" aria-label="Nombre de la categoría">
+    <!-- TARJETA 1 -->
+    <a class="card" href="{{ url_for('routes_main.detalle_azafran') }}">
+      <img src="{{ url_for('static', filename='img/restaurantes/azafran/azafran_portada.jpg') }}" alt="Azafrán">
+      <h3>Azafrán</h3>
+    </a>
+
+    <!-- TARJETA 2 -->
+    <a class="card" href="{{ url_for('routes_main.detalle_centauro') }}">
+      <img src="{{ url_for('static', filename='img/restaurantes/centauro/centauro_portada.jpg') }}" alt="Centauro">
+      <h3>Centauro</h3>
+    </a>
+    
+     <!-- TARJETA 3 -->
+    <a class="card" href="{{ url_for('routes_main.detalle_casa') }}">
+      <img src="{{ url_for('static', filename='img/restaurantes/casa/casa_portada.jpg') }}" alt="Casa Vigil">
+      <h3>Casa Vigil</h3>
+    </a>
+
+    <!-- TARJETA 4 -->
+    <a class="card" href="{{ url_for('routes_main.detalle_campo') }}">
+      <img src="{{ url_for('static', filename='img/restaurantes/campo/cc_portada.jpg') }}" alt="Casa Vigil">
+      <h3>Casa de Campo</h3>
+    </a>
+  </section>
+{% endblock %}

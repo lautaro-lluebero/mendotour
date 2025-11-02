@@ -1,0 +1,134 @@
+{% extends "layout.html" %}
+{% block title %}Termas de Cacheuta · MendoTour{% endblock %}
+{% block head_extra %}
+<link rel="stylesheet" href="{{ url_for('static', filename='detalle.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="detail-page">
+  <div class="dp-back">
+    <a class="btn" href="{{ url_for('routes_main.actividades') }}">← Volver</a>
+  </div>
+
+  <!-- Título -->
+  <header class="dp-header">
+    <h1>Termas de Cacheuta</h1>
+  </header>
+
+  <!-- Carrusel (sin JS) -->
+  <section class="dp-carousel" aria-label="Galería de imágenes">
+    <!-- Radios de control -->
+    <input type="radio" name="slide" id="s1" checked>
+    <input type="radio" name="slide" id="s2">
+    <input type="radio" name="slide" id="s3">
+    <input type="radio" name="slide" id="s4">
+
+    <!-- Viewport -->
+    <div class="viewport">
+      <div class="track">
+        <!-- Slide 1 -->
+        <figure class="slide">
+          <a href="#view1" aria-label="Ampliar imagen 1">
+            <img src="{{ url_for('static', filename='img/actividades/termas/termas5.jpg') }}" alt="Termas de Cacheuta">
+          </a>
+        </figure>
+        <!-- Slide 2 -->
+        <figure class="slide">
+          <a href="#view2" aria-label="Ampliar imagen 2">
+            <img src="{{ url_for('static', filename='img/actividades/termas/termas4.jpg') }}" alt="Termas de Cacheuta">
+          </a>
+        </figure>
+        <!-- Slide 3 -->
+        <figure class="slide">
+          <a href="#view3" aria-label="Ampliar imagen 3">
+            <img src="{{ url_for('static', filename='img/actividades/termas/termas3.jpg') }}" alt="Termas de Cacheuta">
+          </a>
+        </figure>
+        <!-- Slide 4 -->
+        <figure class="slide">
+          <a href="#view4" aria-label="Ampliar imagen 4">
+            <img src="{{ url_for('static', filename='img/actividades/termas/termas2.jpg') }}" alt="Termas de Cacheuta">
+          </a>
+        </figure>
+      </div>
+    </div>
+
+    <!-- Flechas (mapeadas para ciclo infinito) -->
+    <div class="arrows" aria-hidden="true">
+      <!-- cuando está s1: prev->s4 | next->s2 -->
+      <label for="s4" class="prev p1">‹</label>
+      <label for="s2" class="next n1">›</label>
+
+      <!-- cuando está s2: prev->s1 | next->s3 -->
+      <label for="s1" class="prev p2">‹</label>
+      <label for="s3" class="next n2">›</label>
+
+      <!-- cuando está s3: prev->s2 | next->s4 -->
+      <label for="s2" class="prev p3">‹</label>
+      <label for="s4" class="next n3">›</label>
+
+      <!-- cuando está s4: prev->s3 | next->s1 -->
+      <label for="s3" class="prev p4">‹</label>
+      <label for="s1" class="next n4">›</label>
+    </div>
+
+    <!-- Dots -->
+    <div class="dots" role="tablist" aria-label="Cambiar imagen">
+      <label for="s1" role="tab" aria-controls="s1"></label>
+      <label for="s2" role="tab" aria-controls="s2"></label>
+      <label for="s3" role="tab" aria-controls="s3"></label>
+      <label for="s4" role="tab" aria-controls="s4"></label>
+    </div>
+  </section>
+
+  <!-- Descripción -->
+  <section class="dp-body">
+    <h2>Termas de Cacheuta</h2>
+    <p>
+      Las Termas de Cacheuta son un complejo termal ubicado en el distrito de Cacheuta, en el departamento de Luján de Cuyo, provincia de Mendoza, Argentina. Se encuentran a aproximadamente 38 km de la ciudad de Mendoza. El complejo se encuentra junto al Río Mendoza, en un entorno de pre-cordillera que lo hace especialmente atractivo para combinar naturaleza, relax y aventura.
+    </p>
+    <h3>Ubicación y cómo llegar</h3>
+    <p>
+      Desde la ciudad de Mendoza, se accede principalmente por la Ruta Provincial 82, que conecta hacia Cacheuta. El trayecto es de alrededor de 35-45 minutos en auto, dependiendo del tráfico y el punto de partida. También es posible contratar excursiones con traslado desde la capital mendocina.
+    </p>
+    <h3>Qué ver y qué hacer</h3>
+    <p>
+      <ul>  
+      <li>El parque termal alberga múltiples piscinas termales (al aire libre y bajo techo) con variadas temperaturas, ideales tanto para relax como para disfrutar en familia.</li>
+      <li>También ofrece actividades de aventura: tirolesa, arborismo o rappel en algunos casos.</li>
+      <li>Para quienes buscan mayor relax, está el “TermaSpa” con hidromasajes, grutas, fango terapia y sauna.</li>
+      <li>Las vistas del río y de las montañas hacen que el entorno sea parte del atractivo: no sólo el agua, sino también el paisaje.</li>
+    </ul>
+    </p>
+    <h3>Recomendaciones</h3>
+    <p>
+    <ul>  
+      <li>Llevar traje de baño, toalla, ojotas (sandalias de goma) ya que se accede a piscinas termales.</li>
+      <li>Protector solar, gorra y ropa ligera para las horas de sol; y algo de abrigo para cuando baja la temperatura al atardecer en montaña.</li>
+      <li>Si vas en temporada de verano, considerar que puede haber muchisima gente, reservar con anticipación o llegar temprano.</li>
+      <li>Para una experiencia más tranquila: ir en temporada menos concurrida, o elegir el spa en lugar del parque masivo.</li>
+    </ul>
+    </p>
+    
+  </section>
+
+</div>
+
+<!-- Lightbox CSS-only (con botón Cerrar) -->
+<div id="view1" class="dp-overlay">
+  <a class="close" href="#cerrar" aria-label="Cerrar">×</a>
+  <img src="{{ url_for('static', filename='img/actividades/termas/termas5.jpg') }}" alt="">
+</div>
+<div id="view2" class="dp-overlay">
+  <a class="close" href="#cerrar" aria-label="Cerrar">×</a>
+  <img src="{{ url_for('static', filename='img/actividades/termas/termas4.jpg') }}" alt="">
+</div>
+<div id="view3" class="dp-overlay">
+  <a class="close" href="#cerrar" aria-label="Cerrar">×</a>
+  <img src="{{ url_for('static', filename='img/actividades/termas/termas3.jpg') }}" alt="">
+</div>
+<div id="view4" class="dp-overlay">
+  <a class="close" href="#cerrar" aria-label="Cerrar">×</a>
+  <img src="{{ url_for('static', filename='img/actividades/termas/termas2.jpg') }}" alt="">
+</div>
+{% endblock %}

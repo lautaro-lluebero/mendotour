@@ -1,0 +1,122 @@
+{% extends "layout.html" %}
+{% block title %}Las Leñas · MendoTour{% endblock %}
+{% block head_extra %}
+<link rel="stylesheet" href="{{ url_for('static', filename='detalle.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="detail-page">
+  <div class="dp-back">
+    <a class="btn" href="{{ url_for('routes_main.atractivos') }}">← Volver</a>
+  </div>
+
+  <!-- Título -->
+  <header class="dp-header">
+    <h1>Las Leñas</h1>
+  </header>
+
+  <!-- Carrusel (sin JS) -->
+  <section class="dp-carousel" aria-label="Galería de imágenes">
+    <!-- Radios de control -->
+    <input type="radio" name="slide" id="s1" checked>
+    <input type="radio" name="slide" id="s2">
+    <input type="radio" name="slide" id="s3">
+    <input type="radio" name="slide" id="s4">
+
+    <!-- Viewport -->
+    <div class="viewport">
+      <div class="track">
+        <!-- Slide 1 -->
+        <figure class="slide">
+          <a href="#view1" aria-label="Ampliar imagen 1">
+            <img src="{{ url_for('static', filename='img/atractivos/lenas/le1.jpg') }}" alt="Las Leñas">
+          </a>
+        </figure>
+        <!-- Slide 2 -->
+        <figure class="slide">
+          <a href="#view2" aria-label="Ampliar imagen 2">
+            <img src="{{ url_for('static', filename='img/atractivos/lenas/le2.jpg') }}" alt="Las Leñas">
+          </a>
+        </figure>
+        <!-- Slide 3 -->
+        <figure class="slide">
+          <a href="#view3" aria-label="Ampliar imagen 3">
+            <img src="{{ url_for('static', filename='img/atractivos/lenas/le3.jpg') }}" alt="Las Leñas">
+          </a>
+        </figure>
+        <!-- Slide 4 -->
+        <figure class="slide">
+          <a href="#view4" aria-label="Ampliar imagen 4">
+            <img src="{{ url_for('static', filename='img/atractivos/lenas/le4.jpg') }}" alt="Las Leñas">
+          </a>
+        </figure>
+      </div>
+    </div>
+
+    <!-- Flechas (mapeadas para ciclo infinito) -->
+    <div class="arrows" aria-hidden="true">
+      <!-- cuando está s1: prev->s4 | next->s2 -->
+      <label for="s4" class="prev p1">‹</label>
+      <label for="s2" class="next n1">›</label>
+
+      <!-- cuando está s2: prev->s1 | next->s3 -->
+      <label for="s1" class="prev p2">‹</label>
+      <label for="s3" class="next n2">›</label>
+
+      <!-- cuando está s3: prev->s2 | next->s4 -->
+      <label for="s2" class="prev p3">‹</label>
+      <label for="s4" class="next n3">›</label>
+
+      <!-- cuando está s4: prev->s3 | next->s1 -->
+      <label for="s3" class="prev p4">‹</label>
+      <label for="s1" class="next n4">›</label>
+    </div>
+
+    <!-- Dots -->
+    <div class="dots" role="tablist" aria-label="Cambiar imagen">
+      <label for="s1" role="tab" aria-controls="s1"></label>
+      <label for="s2" role="tab" aria-controls="s2"></label>
+      <label for="s3" role="tab" aria-controls="s3"></label>
+      <label for="s4" role="tab" aria-controls="s4"></label>
+    </div>
+  </section>
+
+  <!-- Descripción -->
+  <section class="dp-body">
+    <p>
+        Las Leñas (Malargüe, Mendoza) es el centro de ski más famoso de la provincia, enclavado en plena cordillera. La base está a 2.240 m s. n. m. y el punto más alto ronda los 3.430 m, con un desnivel de ~1.190 m y 14 medios de elevación; es reconocido por su nieve seca y por el terreno fuera de pista que ofrece el teleférico Marte.
+    </p>
+    <h3>Dónde queda y cómo llegar:</h3>
+    <p>
+        Está a ~340 km de la Ciudad de Mendoza por RN 40 + RP 222 (unas 4 h en auto, condiciones mediante) y a ~1.200 km de Buenos Aires; desde Malargüe se accede por ruta y transfers.
+    </p>
+    <h3>¿Por qué ir? </h3>
+    <p>
+        Pistas para todos los niveles y un clásico de expertos: las líneas empinadas del sector Marte (Eduardo’s, Paraíso, Marte Bowl). Cuando el clima colabora, es un imán de freeride de primer nivel en Sudamérica.
+    </p>
+    <h3>Temporadas y actividades:</h3>
+    <ul>
+        <li>Invierno (junio-septiembre): esquí y snowboard, clases, alquiler de equipos, heli-ski, paseos en trineo, snowmobile.</li>
+        <li>Verano (diciembre-marzo): trekking, mountain bike, cabalgatas, pesca deportiva, canopy, 4x4.</li>
+    </ul>
+    
+</div>
+
+<!-- Lightbox CSS-only (con botón Cerrar) -->
+<div id="view1" class="dp-overlay">
+  <a class="close" href="#cerrar" aria-label="Cerrar">×</a>
+  <img src="{{ url_for('static', filename='img/atractivos/lenas/le1.jpg') }}" alt="">
+</div>
+<div id="view2" class="dp-overlay">
+  <a class="close" href="#cerrar" aria-label="Cerrar">×</a>
+  <img src="{{ url_for('static', filename='img/atractivos/lenas/le2.jpg') }}" alt="">
+</div>
+<div id="view3" class="dp-overlay">
+  <a class="close" href="#cerrar" aria-label="Cerrar">×</a>
+  <img src="{{ url_for('static', filename='img/atractivos/lenas/le3.jpg') }}" alt="">
+</div>
+<div id="view4" class="dp-overlay">
+  <a class="close" href="#cerrar" aria-label="Cerrar">×</a>
+  <img src="{{ url_for('static', filename='img/atractivos/lenas/le4.jpg') }}" alt="">
+</div>
+{% endblock %}

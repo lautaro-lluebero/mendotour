@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Trazar recorrido tranvía</title>
+
+<!-- Leaflet sin descargar nada -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<style>
+  #map { 
+    height: 80vh;
+  }
+
+  /* área para ver coordenadas: más grande + cómodo */
+  #coords-container {
+    width: 95%;
+    margin: 15px auto;
+  }
+
+  #coords {
+    width: 100%;
+    height: 300px;        /* antes era 160px */
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 15px;
+    resize: vertical;     /* permite agrandar más manualmente */
+    font-family: monospace;
+    white-space: pre;     /* mantiene formato con saltos de línea */
+  }
+
+  h2 {
+    text-align: center;
+    margin-top: 10px;
+    font-family: Arial;
+  }
+</style>
+</head>
+<body>
+
+<h2>Marcando el recorrido del tranvía (usar clics sobre el mapa)</h2>
+
+<div id="map"></div>
+
+<div id="coords-container">
+  <label>Coordenadas generadas:</label>
+  <textarea id="coords" placeholder="Las coordenadas aparecerán aquí..."></textarea>
+</div>
+
+<script>
+const map = L.map('map').setView([-32.923, -68.85], 13);
+
+// Capa base
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; OpenStreetMap'
+}).addTo(map);
+
+// Guarda coordenadas de cada clic
+let puntos = [];
+let polyline = L.polyline([], { color: "red", weight: 6 }).addTo(map);
+
+// CADA CLICK AGREGA UN PUNTO
+map.on("click", function(e) {
+  const punto = [e.latlng.lat, e.latlng.lng];
+  puntos.push(punto);
+  polyline.setLatLngs(puntos);
+
+  // Formato con saltos de línea para leer mejor
+  let textoFormateado = "[\n";
+  puntos.forEach(p => {
+    textoFormateado += `  [${p[0]}, ${p[1]}],\n`;
+  });
+  textoFormateado += "]";
+
+  document.querySelector("#coords").value = textoFormateado;
+});
+</script>
+
+</body>
+</html>

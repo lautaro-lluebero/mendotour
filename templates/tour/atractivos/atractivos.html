@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+{% block title %}Atractivos turísticos · MendoTour{% endblock %}
+{% block head_extra %}
+<link rel="stylesheet" href="{{ url_for('static', filename='oferta.css') }}">
+{% endblock %}
+
+{% block content %}
+  <header class="page-hero">
+    <h1>Atractivos Turísticos</h1>
+  </header>
+
+  <section class="grid-cards" aria-label="Nombre de la categoría">
+    <!-- TARJETA 1 -->
+    <a class="card" href="{{ url_for('routes_main.detalle_villavicencio') }}">
+      <img src="{{ url_for('static', filename='img/atractivos/villavicencio/villavicencio_portada.jpg') }}" alt="Reserva Natural Villavicencio">
+      <h3>Reserva Natural Villavicencio</h3>
+    </a>
+
+    <!-- TARJETA 2 -->
+    <a class="card" href="{{ url_for('routes_main.detalle_caverna') }}">
+      <img src="{{ url_for('static', filename='img/atractivos/caverna/caverna_portada.jpg') }}" alt="Reserva Natural Caverna de las Brujas">
+      <h3>Reserva Natural Caverna de las Brujas</h3>
+    </a>
+    
+     <!-- TARJETA 3 -->
+    <a class="card" href="{{ url_for('routes_main.detalle_laguna') }}">
+      <img src="{{ url_for('static', filename='img/atractivos/laguna/laguna_portada.jpg') }}" alt="Laguna del Diamante">
+      <h3>Laguna del Diamante</h3>
+    </a>
+
+    <!-- TARJETA 4 -->
+    <a class="card" href="{{ url_for('routes_main.detalle_san_martin') }}">
+      <img src="{{ url_for('static', filename='img/atractivos/san_martin/parque_portada.jpg') }}" alt="Parque General San Martín">
+      <h3>Parque General San Martín</h3>
+    </a>
+
+    <!-- TARJETA 5 -->
+    <a class="card" href="{{ url_for('routes_main.detalle_lenas') }}">
+      <img src="{{ url_for('static', filename='img/atractivos/lenas/las_lenas_portada.jpg') }}" alt="Las Leñas">
+      <h3>Las Leñas</h3>
+    </a>
+
+    <!-- TARJETA 6 -->
+    <a class="card" href="{{ url_for('routes_main.detalle_potrerillos') }}">
+      <img src="{{ url_for('static', filename='img/atractivos/potrerillos/potrerillo_portada.jpg') }}" alt="Potrerillos">
+      <h3>Potrerillos</h3>
+    </a>
+
+    <!-- TARJETA 7 -->
+    <a class="card" href="{{ url_for('routes_main.detalle_estadio') }}">
+      <img src="{{ url_for('static', filename='img/atractivos/estadio/estadio_portada.jpg') }}" alt="Estadio Malvinas Argentinas">
+      <h3>Estadio Malvinas Argentinas</h3>
+    </a>
+
+    <!-- TARJETA 8 -->
+    <a class="card" href="{{ url_for('routes_main.detalle_puente') }}">
+      <img src="{{ url_for('static', filename='img/atractivos/puente/puente_portada.jpg') }}" alt="Puente del Inca">
+      <h3>Puente del Inca</h3>
+    </a>
+  </section>
+{% endblock %}

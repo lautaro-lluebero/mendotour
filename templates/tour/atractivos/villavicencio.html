@@ -1,0 +1,120 @@
+{% extends "layout.html" %}
+{% block title %}Villavicencio · MendoTour{% endblock %}
+{% block head_extra %}
+<link rel="stylesheet" href="{{ url_for('static', filename='detalle.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="detail-page">
+  <div class="dp-back">
+    <a class="btn" href="{{ url_for('routes_main.atractivos') }}">← Volver</a>
+  </div>
+
+  <!-- Título -->
+  <header class="dp-header">
+    <h1>Reserva natural Villavicencio</h1>
+  </header>
+
+  <!-- Carrusel (sin JS) -->
+  <section class="dp-carousel" aria-label="Galería de imágenes">
+    <!-- Radios de control -->
+    <input type="radio" name="slide" id="s1" checked>
+    <input type="radio" name="slide" id="s2">
+    <input type="radio" name="slide" id="s3">
+    <input type="radio" name="slide" id="s4">
+
+    <!-- Viewport -->
+    <div class="viewport">
+      <div class="track">
+        <!-- Slide 1 -->
+        <figure class="slide">
+          <a href="#view1" aria-label="Ampliar imagen 1">
+            <img src="{{ url_for('static', filename='img/atractivos/villavicencio/villavicencio_portada.jpg') }}" alt="Reserva natural Villavicencio">
+          </a>
+        </figure>
+        <!-- Slide 2 -->
+        <figure class="slide">
+          <a href="#view2" aria-label="Ampliar imagen 2">
+            <img src="{{ url_for('static', filename='img/atractivos/villavicencio/v1.jpg') }}" alt="Reserva natural Villavicencio">
+          </a>
+        </figure>
+        <!-- Slide 3 -->
+        <figure class="slide">
+          <a href="#view3" aria-label="Ampliar imagen 3">
+            <img src="{{ url_for('static', filename='img/atractivos/villavicencio/v2.jpg') }}" alt="Reserva natural Villavicencio">
+          </a>
+        </figure>
+        <!-- Slide 4 -->
+        <figure class="slide">
+          <a href="#view4" aria-label="Ampliar imagen 4">
+            <img src="{{ url_for('static', filename='img/atractivos/villavicencio/v3.jpg') }}" alt="Reserva natural Villavicencio">
+          </a>
+        </figure>
+      </div>
+    </div>
+
+    <!-- Flechas (mapeadas para ciclo infinito) -->
+    <div class="arrows" aria-hidden="true">
+      <!-- cuando está s1: prev->s4 | next->s2 -->
+      <label for="s4" class="prev p1">‹</label>
+      <label for="s2" class="next n1">›</label>
+
+      <!-- cuando está s2: prev->s1 | next->s3 -->
+      <label for="s1" class="prev p2">‹</label>
+      <label for="s3" class="next n2">›</label>
+
+      <!-- cuando está s3: prev->s2 | next->s4 -->
+      <label for="s2" class="prev p3">‹</label>
+      <label for="s4" class="next n3">›</label>
+
+      <!-- cuando está s4: prev->s3 | next->s1 -->
+      <label for="s3" class="prev p4">‹</label>
+      <label for="s1" class="next n4">›</label>
+    </div>
+
+    <!-- Dots -->
+    <div class="dots" role="tablist" aria-label="Cambiar imagen">
+      <label for="s1" role="tab" aria-controls="s1"></label>
+      <label for="s2" role="tab" aria-controls="s2"></label>
+      <label for="s3" role="tab" aria-controls="s3"></label>
+      <label for="s4" role="tab" aria-controls="s4"></label>
+    </div>
+  </section>
+
+  <!-- Descripción -->
+  <section class="dp-body">
+    <p>
+      La Reserva Natural Villavicencio es un área protegida en el departamento de Las Heras, Mendoza, a unos 50 km de la ciudad de Mendoza. Abarca cerca de 62.000 hectáreas y fue creada en 2000; además, desde 2017 integra la red de sitios Ramsar por el valor de sus humedales y ambientes de monte y precordillera.
+    </p>
+    <p>
+      El ícono del lugar es el Gran Hotel Villavicencio (1940), hoy cerrado, de estilo alpino y ubicado a 1.750 m s. n. m. en medio de un oasis de verdes; a partir de allí comienza el ascenso por la Ruta Provincial 52, famosa por los “Caracoles de Villavicencio” (más de 270 curvas) rumbo a Paramillos.
+    </p>
+    <p>
+      La reserva protege fauna y flora típicas andinas y del monte: guanacos, aves rapaces (como el cóndor andino), zorros y jarillas, entre otras. Los miradores ofrecen vistas amplias del piedemonte y, más arriba, de la cordillera; puntos clásicos del recorrido son el Mirador de los Caracoles, el Abismo del Indio y la Cruz de Paramillos (~3.100 m s. n. m.).
+    </p>
+    <p>
+      Qué hacer: caminatas interpretativas, avistaje de fauna y aves, fotografía paisajística y el circuito panorámico por la RP52 (camino consolidado de cornisa). Recomiendan manejar con precaución y respetar la señalización y normas de conservación.
+    </p>
+
+  </section>
+
+</div>
+
+<!-- Lightbox CSS-only (con botón Cerrar) -->
+<div id="view1" class="dp-overlay">
+  <a class="close" href="#cerrar" aria-label="Cerrar">×</a>
+  <img src="{{ url_for('static', filename='img/atractivos/villavicencio/villavicencio_portada.jpg') }}" alt="">
+</div>
+<div id="view2" class="dp-overlay">
+  <a class="close" href="#cerrar" aria-label="Cerrar">×</a>
+  <img src="{{ url_for('static', filename='img/atractivos/villavicencio/v1.jpg') }}" alt="">
+</div>
+<div id="view3" class="dp-overlay">
+  <a class="close" href="#cerrar" aria-label="Cerrar">×</a>
+  <img src="{{ url_for('static', filename='img/atractivos/villavicencio/v2.jpg') }}" alt="">
+</div>
+<div id="view4" class="dp-overlay">
+  <a class="close" href="#cerrar" aria-label="Cerrar">×</a>
+  <img src="{{ url_for('static', filename='img/atractivos/villavicencio/v3.jpg') }}" alt="">
+</div>
+{% endblock %}

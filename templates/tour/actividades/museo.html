@@ -1,0 +1,129 @@
+{% extends "layout.html" %}
+{% block title %}Museo del Vino · MendoTour{% endblock %}
+{% block head_extra %}
+<link rel="stylesheet" href="{{ url_for('static', filename='detalle.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="detail-page">
+  <div class="dp-back">
+    <a class="btn" href="{{ url_for('routes_main.actividades') }}">← Volver</a>
+  </div>
+
+  <!-- Título -->
+  <header class="dp-header">
+    <h1>Museo del Vino</h1>
+  </header>
+
+  <!-- Carrusel (sin JS) -->
+  <section class="dp-carousel" aria-label="Galería de imágenes">
+    <!-- Radios de control -->
+    <input type="radio" name="slide" id="s1" checked>
+    <input type="radio" name="slide" id="s2">
+    <input type="radio" name="slide" id="s3">
+    <input type="radio" name="slide" id="s4">
+
+    <!-- Viewport -->
+    <div class="viewport">
+      <div class="track">
+        <!-- Slide 1 -->
+        <figure class="slide">
+          <a href="#view1" aria-label="Ampliar imagen 1">
+            <img src="{{ url_for('static', filename='img/actividades/museo/museo4.jpg') }}" alt="Museo del Vino">
+          </a>
+        </figure>
+        <!-- Slide 2 -->
+        <figure class="slide">
+          <a href="#view2" aria-label="Ampliar imagen 2">
+            <img src="{{ url_for('static', filename='img/actividades/museo/museo.jpg') }}" alt="Museo del Vino">
+          </a>
+        </figure>
+        <!-- Slide 3 -->
+        <figure class="slide">
+          <a href="#view3" aria-label="Ampliar imagen 3">
+            <img src="{{ url_for('static', filename='img/actividades/museo/museo3.jpg') }}" alt="Museo del Vino">
+          </a>
+        </figure>
+        <!-- Slide 4 -->
+        <figure class="slide">
+          <a href="#view4" aria-label="Ampliar imagen 4">
+            <img src="{{ url_for('static', filename='img/actividades/museo/museo5.jpg') }}" alt="Museo del Vino">
+          </a>
+        </figure>
+      </div>
+    </div>
+
+    <!-- Flechas (mapeadas para ciclo infinito) -->
+    <div class="arrows" aria-hidden="true">
+      <!-- cuando está s1: prev->s4 | next->s2 -->
+      <label for="s4" class="prev p1">‹</label>
+      <label for="s2" class="next n1">›</label>
+
+      <!-- cuando está s2: prev->s1 | next->s3 -->
+      <label for="s1" class="prev p2">‹</label>
+      <label for="s3" class="next n2">›</label>
+
+      <!-- cuando está s3: prev->s2 | next->s4 -->
+      <label for="s2" class="prev p3">‹</label>
+      <label for="s4" class="next n3">›</label>
+
+      <!-- cuando está s4: prev->s3 | next->s1 -->
+      <label for="s3" class="prev p4">‹</label>
+      <label for="s1" class="next n4">›</label>
+    </div>
+
+    <!-- Dots -->
+    <div class="dots" role="tablist" aria-label="Cambiar imagen">
+      <label for="s1" role="tab" aria-controls="s1"></label>
+      <label for="s2" role="tab" aria-controls="s2"></label>
+      <label for="s3" role="tab" aria-controls="s3"></label>
+      <label for="s4" role="tab" aria-controls="s4"></label>
+    </div>
+  </section>
+
+  <!-- Descripción -->
+  <section class="dp-body">
+    <h2>Museo del Vino</h2>
+    <p>
+      El Museo del Vino es una de las joyas culturales de la provincia de Mendoza. Ubicado en el corazón del vino argentino, este espacio invita a recorrer la historia, la tradición y la evolución de la vitivinicultura, una de las actividades más representativas de la región.
+    </p>
+    <h3>Ubicación y cómo llegar</h3>
+    <p>
+      El museo está dentro de la Bodega La Rural, en Coquimbito, departamento de Maipú, a tan solo 15 km de la ciudad de Mendoza. Se puede acceder fácilmente en auto por la Ruta Nacional 40 o contratando excursiones que incluyen transporte y visitas guiadas por distintas bodegas.
+    </p>
+    <h3>La experiencia</h3>
+    <p>
+     Durante el recorrido, se pueden observar más de 4.000 piezas históricas: herramientas, maquinarias antiguas, toneles y prensas utilizadas desde el siglo XIX. Las exposiciones combinan objetos originales, fotografías y tecnología interactiva para mostrar cómo ha evolucionado el proceso de elaboración del vino. Al finalizar, los visitantes pueden disfrutar de una degustación guiada en la bodega, con diferentes variedades de vinos mendocinos.
+    </p>
+    <h3>Recomendaciones</h3>
+    <p>
+    <ul>  
+      <li>Usar ropa cómoda y calzado adecuado.</li>
+      <li>Participar de las degustaciones, una excelente oportunidad para descubrir nuevos sabores.</li>
+      <li>Llevar cámara o celular: los viñedos y el museo ofrecen vistas ideales para fotos.</li>
+      <li>Consultar horarios de visita antes de ir, ya que pueden variar según la temporada.</li>
+    </ul>
+    </p>
+    
+  </section>
+
+</div>
+
+<!-- Lightbox CSS-only (con botón Cerrar) -->
+<div id="view1" class="dp-overlay">
+  <a class="close" href="#cerrar" aria-label="Cerrar">×</a>
+  <img src="{{ url_for('static', filename='img/actividades/museo/museo4.jpg') }}" alt="">
+</div>
+<div id="view2" class="dp-overlay">
+  <a class="close" href="#cerrar" aria-label="Cerrar">×</a>
+  <img src="{{ url_for('static', filename='img/actividades/museo/museo.jpg') }}" alt="">
+</div>
+<div id="view3" class="dp-overlay">
+  <a class="close" href="#cerrar" aria-label="Cerrar">×</a>
+  <img src="{{ url_for('static', filename='img/actividades/museo/museo3.jpg') }}" alt="">
+</div>
+<div id="view4" class="dp-overlay">
+  <a class="close" href="#cerrar" aria-label="Cerrar">×</a>
+  <img src="{{ url_for('static', filename='img/actividades/museo/museo5.jpg') }}" alt="">
+</div>
+{% endblock %}

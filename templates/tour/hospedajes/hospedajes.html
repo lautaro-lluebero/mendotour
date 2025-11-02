@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block title %}Hospedajes · MendoTour{% endblock %}
+{% block head_extra %}
+<link rel="stylesheet" href="{{ url_for('static', filename='oferta.css') }}">
+{% endblock %}
+
+{% block content %}
+  <header class="page-hero">
+    <h1>Hospedajes</h1>
+  </header>
+
+  <section class="grid-cards" aria-label="Nombre de la categoría">
+    <!-- TARJETA 1 -->
+    <a class="card" href="{{ url_for('routes_main.detalle_park_hyatt') }}">
+      <img src="{{ url_for('static', filename='img/hospedajes/park_hyatt/park_hyatt_portada.jpg') }}" alt="Park Hyatt Mendoza">
+      <h3>Park Hyatt Mendoza</h3>
+    </a>
+
+    <!-- TARJETA 2 -->
+    <a class="card" href="{{ url_for('routes_main.detalle_diplomatic') }}">
+      <img src="{{ url_for('static', filename='img/hospedajes/diplomatic/diplomatic_portada.jpg') }}" alt="Diplomatic Hotel">
+      <h3>Diplomatic Hotel</h3>
+    </a>
+    
+     <!-- TARJETA 3 -->
+    <a class="card" href="{{ url_for('routes_main.detalle_sheraton') }}">
+      <img src="{{ url_for('static', filename='img/hospedajes/sheraton/sheraton_portada.jpg') }}" alt="Sheraton Mendoza Hotel">
+      <h3>Sheraton Mendoza Hotel</h3>
+    </a>
+
+    <!-- TARJETA 4 -->
+    <a class="card" href="{{ url_for('routes_main.detalle_cielos') }}">
+      <img src="{{ url_for('static', filename='img/hospedajes/cielos/cielos_portada.jpg') }}" alt="Entre Cielos">
+      <h3>Entre Cielos | Wine & Wellness Hotel</h3>
+    </a>
+
+  </section>
+{% endblock %}

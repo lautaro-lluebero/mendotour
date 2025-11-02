@@ -1,0 +1,123 @@
+{% extends "layout.html" %}
+{% block title %}Caverna de las Brujas · MendoTour{% endblock %}
+{% block head_extra %}
+<link rel="stylesheet" href="{{ url_for('static', filename='detalle.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="detail-page">
+  <div class="dp-back">
+    <a class="btn" href="{{ url_for('routes_main.atractivos') }}">← Volver</a>
+  </div>
+
+  <!-- Título -->
+  <header class="dp-header">
+    <h1>Reserva Natural Caverna de las Brujas</h1>
+  </header>
+
+  <!-- Carrusel (sin JS) -->
+  <section class="dp-carousel" aria-label="Galería de imágenes">
+    <!-- Radios de control -->
+    <input type="radio" name="slide" id="s1" checked>
+    <input type="radio" name="slide" id="s2">
+    <input type="radio" name="slide" id="s3">
+    <input type="radio" name="slide" id="s4">
+
+    <!-- Viewport -->
+    <div class="viewport">
+      <div class="track">
+        <!-- Slide 1 -->
+        <figure class="slide">
+          <a href="#view1" aria-label="Ampliar imagen 1">
+            <img src="{{ url_for('static', filename='img/atractivos/caverna/c1.jpg') }}" alt="Caverna de las Brujas">
+          </a>
+        </figure>
+        <!-- Slide 2 -->
+        <figure class="slide">
+          <a href="#view2" aria-label="Ampliar imagen 2">
+            <img src="{{ url_for('static', filename='img/atractivos/caverna/c2.jpg') }}" alt="Caverna de las Brujas">
+          </a>
+        </figure>
+        <!-- Slide 3 -->
+        <figure class="slide">
+          <a href="#view3" aria-label="Ampliar imagen 3">
+            <img src="{{ url_for('static', filename='img/atractivos/caverna/caverna_portada.jpg') }}" alt="Caverna de las Brujas">
+          </a>
+        </figure>
+        <!-- Slide 4 -->
+        <figure class="slide">
+          <a href="#view4" aria-label="Ampliar imagen 4">
+            <img src="{{ url_for('static', filename='img/atractivos/caverna/c3.jpg') }}" alt="Caverna de las Brujas">
+          </a>
+        </figure>
+      </div>
+    </div>
+
+    <!-- Flechas (mapeadas para ciclo infinito) -->
+    <div class="arrows" aria-hidden="true">
+      <!-- cuando está s1: prev->s4 | next->s2 -->
+      <label for="s4" class="prev p1">‹</label>
+      <label for="s2" class="next n1">›</label>
+
+      <!-- cuando está s2: prev->s1 | next->s3 -->
+      <label for="s1" class="prev p2">‹</label>
+      <label for="s3" class="next n2">›</label>
+
+      <!-- cuando está s3: prev->s2 | next->s4 -->
+      <label for="s2" class="prev p3">‹</label>
+      <label for="s4" class="next n3">›</label>
+
+      <!-- cuando está s4: prev->s3 | next->s1 -->
+      <label for="s3" class="prev p4">‹</label>
+      <label for="s1" class="next n4">›</label>
+    </div>
+
+    <!-- Dots -->
+    <div class="dots" role="tablist" aria-label="Cambiar imagen">
+      <label for="s1" role="tab" aria-controls="s1"></label>
+      <label for="s2" role="tab" aria-controls="s2"></label>
+      <label for="s3" role="tab" aria-controls="s3"></label>
+      <label for="s4" role="tab" aria-controls="s4"></label>
+    </div>
+  </section>
+
+  <!-- Descripción -->
+  <section class="dp-body">
+    <p>
+        La Reserva Provincial Caverna de las Brujas está en Malargüe, Mendoza, cerca de Bardas Blancas y a unos 65-71 km al sur de la ciudad de Malargüe. Se accede por la RN 40 y un desvío final de ~8 km hasta el área protegida. Es un sistema kárstico desarrollado en rocas calcáreas jurásicas de origen marino, famoso por sus estalactitas, estalagmitas, velos y columnas, con salas como la Sala de la Virgen, la Sala de la Estalagmita Gigante y la Sala de los Encuentros. La superficie protegida es de 128 ha y fue creada en 1990.
+    </p>
+    <h3>Qué la hace especial:</h3>
+    <ul>
+        <li>Geología “de libro”: pasadizos modelados por el agua durante millones de años; en el exterior hay estratos con fósiles de gasterópodos.</li>
+        <li>Ambiente subterráneo estable y muy frágil; el recorrido permite ver espeleotemas bien conservados en varias salas emblemáticas.</li>
+    </ul>
+    <h3>Cómo visitarla:</h3>
+    <ul>
+        <li>Ingreso solo con guía habilitado y cupo limitado; hay recorrido parcial (hasta Sala de la Virgen) y recorrido total (hasta Estalagmita Gigante).</li>
+        <li>Se recomienda reservar turno online en la Dirección de Áreas Protegidas.</li>
+        <li>Referencias de acceso: el sitio oficial de turismo de Malargüe detalla ubicación, geología y link directo para “Reservá tu turno”.</li>
+        <li>Dentro de la caverna la temperatura es fresca y estable durante el año (llevar abrigo y calzado cómodo).</li>
+    </ul>
+
+  </section>
+
+</div>
+
+<!-- Lightbox CSS-only (con botón Cerrar) -->
+<div id="view1" class="dp-overlay">
+  <a class="close" href="#cerrar" aria-label="Cerrar">×</a>
+  <img src="{{ url_for('static', filename='img/atractivos/caverna/c1.jpg') }}" alt="">
+</div>
+<div id="view2" class="dp-overlay">
+  <a class="close" href="#cerrar" aria-label="Cerrar">×</a>
+  <img src="{{ url_for('static', filename='img/atractivos/caverna/c2.jpg') }}" alt="">
+</div>
+<div id="view3" class="dp-overlay">
+  <a class="close" href="#cerrar" aria-label="Cerrar">×</a>
+  <img src="{{ url_for('static', filename='img/atractivos/caverna/caverna_portada.jpg') }}" alt="">
+</div>
+<div id="view4" class="dp-overlay">
+  <a class="close" href="#cerrar" aria-label="Cerrar">×</a>
+  <img src="{{ url_for('static', filename='img/atractivos/caverna/c3.jpg') }}" alt="">
+</div>
+{% endblock %}

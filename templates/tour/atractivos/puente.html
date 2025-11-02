@@ -1,0 +1,126 @@
+{% extends "layout.html" %}
+{% block title %}Puente del Inca · MendoTour{% endblock %}
+{% block head_extra %}
+<link rel="stylesheet" href="{{ url_for('static', filename='detalle.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="detail-page">
+  <div class="dp-back">
+    <a class="btn" href="{{ url_for('routes_main.atractivos') }}">← Volver</a>
+  </div>
+
+  <!-- Título -->
+  <header class="dp-header">
+    <h1>Puente del Inca</h1>
+  </header>
+
+  <!-- Carrusel (sin JS) -->
+  <section class="dp-carousel" aria-label="Galería de imágenes">
+    <!-- Radios de control -->
+    <input type="radio" name="slide" id="s1" checked>
+    <input type="radio" name="slide" id="s2">
+    <input type="radio" name="slide" id="s3">
+    <input type="radio" name="slide" id="s4">
+
+    <!-- Viewport -->
+    <div class="viewport">
+      <div class="track">
+        <!-- Slide 1 -->
+        <figure class="slide">
+          <a href="#view1" aria-label="Ampliar imagen 1">
+            <img src="{{ url_for('static', filename='img/atractivos/puente/i1.jpg') }}" alt="Puente del Inca">
+          </a>
+        </figure>
+        <!-- Slide 2 -->
+        <figure class="slide">
+          <a href="#view2" aria-label="Ampliar imagen 2">
+            <img src="{{ url_for('static', filename='img/atractivos/puente/i2.jpg') }}" alt="Puente del Inca">
+          </a>
+        </figure>
+        <!-- Slide 3 -->
+        <figure class="slide">
+          <a href="#view3" aria-label="Ampliar imagen 3">
+            <img src="{{ url_for('static', filename='img/atractivos/puente/i3.jpg') }}" alt="Puente del Inca">
+          </a>
+        </figure>
+        <!-- Slide 4 -->
+        <figure class="slide">
+          <a href="#view4" aria-label="Ampliar imagen 4">
+            <img src="{{ url_for('static', filename='img/atractivos/puente/i4.jpg') }}" alt="Puente del Inca">
+          </a>
+        </figure>
+      </div>
+    </div>
+
+    <!-- Flechas (mapeadas para ciclo infinito) -->
+    <div class="arrows" aria-hidden="true">
+      <!-- cuando está s1: prev->s4 | next->s2 -->
+      <label for="s4" class="prev p1">‹</label>
+      <label for="s2" class="next n1">›</label>
+
+      <!-- cuando está s2: prev->s1 | next->s3 -->
+      <label for="s1" class="prev p2">‹</label>
+      <label for="s3" class="next n2">›</label>
+
+      <!-- cuando está s3: prev->s2 | next->s4 -->
+      <label for="s2" class="prev p3">‹</label>
+      <label for="s4" class="next n3">›</label>
+
+      <!-- cuando está s4: prev->s3 | next->s1 -->
+      <label for="s3" class="prev p4">‹</label>
+      <label for="s1" class="next n4">›</label>
+    </div>
+
+    <!-- Dots -->
+    <div class="dots" role="tablist" aria-label="Cambiar imagen">
+      <label for="s1" role="tab" aria-controls="s1"></label>
+      <label for="s2" role="tab" aria-controls="s2"></label>
+      <label for="s3" role="tab" aria-controls="s3"></label>
+      <label for="s4" role="tab" aria-controls="s4"></label>
+    </div>
+  </section>
+
+  <!-- Descripción -->
+  <section class="dp-body">
+    <p>
+      Puente natural de travertino sobre el río Las Cuevas, famoso por sus tonos ocres, naranjas y amarillos formados por aguas termales que mineralizan la roca. Está a ~2.700 m s. n. m., mide aprox. 53 m de largo, 28 m de ancho y queda a ~19 m sobre el cauce. Desde 2005 es Monumento Natural provincial y el acceso al puente está restringido: se observa desde miradores para su conservación.
+    </p>
+    <h3>Dónde queda y cómo llegar:</h3>
+    <p>
+        Sobre la RN 7, a ~180 km de la Ciudad de Mendoza, muy cerca del Parque Provincial Aconcagua y del paso a Chile. Se llega por ruta asfaltada; suele combinarse con Horcones/Aconcagua.
+    </p>
+    <h3>Un poco de historia:</h3>
+    <p>
+      El puente fue un centro termal y hotelero en el siglo XIX, con un lujoso hotel que albergó a personalidades como Domingo Faustino Sarmiento y Charles Darwin. En 1965, una avalancha destruyó gran parte del hotel y desde entonces el puente ha sido objeto de conservación y estudio debido a su valor geológico y turístico.
+    </p>
+    <h3>¿Por qué ir?</h3>
+    <ul>
+      <li>Postal única de alta montaña y geología “en vivo”.</li>
+      <li>Aguas termales que tiñen la roca y formaron el puente.</li>
+      <li>A minutos del Aconcagua: combo ideal de medio día/día completo.</li>
+      <li>Miradores señalizados y feria de artesanos en temporada.</li>
+    </ul>
+
+  </section>
+
+</div>
+
+<!-- Lightbox CSS-only (con botón Cerrar) -->
+<div id="view1" class="dp-overlay">
+  <a class="close" href="#cerrar" aria-label="Cerrar">×</a>
+  <img src="{{ url_for('static', filename='img/atractivos/puente/i1.jpg') }}" alt="">
+</div>
+<div id="view2" class="dp-overlay">
+  <a class="close" href="#cerrar" aria-label="Cerrar">×</a>
+  <img src="{{ url_for('static', filename='img/atractivos/puente/i2.jpg') }}" alt="">
+</div>
+<div id="view3" class="dp-overlay">
+  <a class="close" href="#cerrar" aria-label="Cerrar">×</a>
+  <img src="{{ url_for('static', filename='img/atractivos/puente/i3.jpg') }}" alt="">
+</div>
+<div id="view4" class="dp-overlay">
+  <a class="close" href="#cerrar" aria-label="Cerrar">×</a>
+  <img src="{{ url_for('static', filename='img/atractivos/puente/i4.jpg') }}" alt="">
+</div>
+{% endblock %}

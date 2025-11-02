@@ -1,0 +1,156 @@
+:root{
+  --bg: #f8b047;
+  --panel: #f9cf83;     
+  --text: #4a2c00;
+  --white: #fff;
+  --accent: #ffcc5c;
+  --radius-xl: 24px;
+}
+
+.about-hero{
+  padding: clamp(16px, 2vw, 24px);
+}
+.about-panel{
+  background: var(--panel);
+  border-radius: var(--radius-xl);
+  padding: clamp(36px, 6vw, 72px) clamp(20px, 4vw, 48px);
+  text-align: center;
+  box-shadow: 0 12px 36px rgba(0,0,0,.12) inset, 0 6px 18px rgba(0,0,0,.08);
+}
+.about-logo{
+  width: clamp(80px, 14vw, 160px);
+  height: clamp(80px, 14vw, 160px);
+  object-fit: contain;
+  display: block;
+  margin: 0 auto clamp(12px, 1.8vw, 18px);
+}
+.about-heading{
+  font-size: clamp(1.6rem, 2.2vw + 1rem, 3rem);
+  letter-spacing: 1px;
+  margin: 0 0 8px;
+  color: var(--text);
+}
+.about-kicker{
+  font-size: clamp(1.1rem, 1.2vw + .6rem, 2rem);
+  margin: clamp(6px, 1vw, 12px) 0 0;
+  color: #fff;
+  font-weight: 700;
+}
+
+/* Secciones interiores */
+.about-sections{
+  padding-top: 24px;
+  padding-bottom: 8px;
+}
+.about-grid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(16px, 2.4vw, 28px);
+}
+.about-card{
+  background: rgba(255,255,255,.35);
+  border: 3px solid var(--white);
+  border-radius: 16px;
+  padding: clamp(16px, 2vw, 22px);
+  box-shadow: 0 8px 24px rgba(0,0,0,.12);
+}
+.about-card h2{
+  margin: 0 0 8px;
+  font-size: clamp(1.1rem, .7vw + .9rem, 1.4rem);
+}
+.about-card p{ margin: 0; line-height: 1.5; }
+.values{ margin: 0; padding-left: 18px; line-height: 1.5; }
+
+/* Equipo */
+.team{
+  padding-top: 20px;
+  padding-bottom: 12px;
+}
+.team h2{
+  text-align: center;
+  margin: 0 0 14px;
+  font-size: clamp(1.4rem, 1vw + 1rem, 1.8rem);
+}
+.team-grid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(14px, 2vw, 20px);
+  justify-items: stretch;
+}
+.member{
+  background: rgba(255,255,255,.35);
+  border: 3px solid var(--white);
+  border-radius: 16px;
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(0,0,0,.12);
+}
+.avatar{
+  width: 84px; height: 84px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--text);
+  font-weight: 800;
+  display: grid; place-items: center;
+  margin: 0 auto 10px;
+}
+.member h3{ margin: 4px 0 4px; font-size: 1.05rem; }
+.member p{ margin: 0; color: #6a4b1c; }
+
+/* CTA */
+.about-cta{
+  text-align: center;
+  padding: 24px 0 40px;
+}
+.about-cta h2{
+  margin: 0 0 8px;
+  font-size: clamp(1.2rem, 1vw + 1rem, 1.6rem);
+}
+.about-cta p{
+  margin: 0 0 14px;
+}
+.cta-btn{
+  display: inline-block;
+  background: var(--white);
+  color: var(--text);
+  text-decoration: none;
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: 2px solid #fff;
+  box-shadow: 0 6px 18px rgba(0,0,0,.12);
+  font-weight: 700;
+}
+.cta-btn:hover{
+  background: #ffe9b5;
+}
+
+
+@media (max-width: 1200px){
+  .team-grid{ grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 900px){
+  .team-grid{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px){
+  .team-grid{ grid-template-columns: 1fr; }
+}
+/* Foto del integrante */
+.avatar-img{
+  width: 110px;          
+  height: 110px;
+  object-fit: cover;      
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto 10px;
+  border: 3px solid var(--white);
+  box-shadow: 0 6px 18px rgba(0,0,0,.06);
+}
+
+/* Limita el ancho de la card para no “estire” la foto */
+.member{ max-width: 280px; margin-inline: auto; }
+
+/* Responsive: un poco más chica en mobile */
+@media (max-width: 600px){
+  .avatar-img{ width: 92px; height: 92px; }
+}
+

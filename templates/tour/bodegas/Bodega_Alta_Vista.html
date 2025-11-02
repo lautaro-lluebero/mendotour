@@ -1,0 +1,123 @@
+{% extends "layout.html" %}
+{% block title %}Bodega Alta Vista · MendoTour{% endblock %}
+{% block head_extra %}
+<link rel="stylesheet" href="{{ url_for('static', filename='detalle.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="detail-page">
+  <div class="dp-back">
+    <a class="btn" href="{{ url_for('routes_main.bodegas') }}">← Volver</a>
+  </div>
+
+  <!-- Título -->
+  <header class="dp-header">
+    <h1>Bodega Alta Vista</h1>
+  </header>
+
+  <!-- Carrusel (sin JS) -->
+  <section class="dp-carousel" aria-label="Galería de imágenes">
+    <!-- Radios de control -->
+    <input type="radio" name="slide" id="s1" checked>
+    <input type="radio" name="slide" id="s2">
+    <input type="radio" name="slide" id="s3">
+    <input type="radio" name="slide" id="s4">
+
+    <!-- Viewport -->
+    <div class="viewport">
+      <div class="track">
+        <!-- Slide 1 -->
+        <figure class="slide">
+          <a href="#view1" aria-label="Ampliar imagen 1">
+            <img src="{{ url_for('static', filename='img/bodegas/Chacras_de_Coria/bodega.jpg') }}" alt="Bodega Alta Vista">
+          </a>
+        </figure>
+        <!-- Slide 2 -->
+        <figure class="slide">
+          <a href="#view2" aria-label="Ampliar imagen 2">
+            <img src="{{ url_for('static', filename='img/bodegas/Chacras_de_Coria/bodega5.jpg') }}" alt="Bodega Alta Vista">
+          </a>
+        </figure>
+        <!-- Slide 3 -->
+        <figure class="slide">
+          <a href="#view3" aria-label="Ampliar imagen 3">
+            <img src="{{ url_for('static', filename='img/bodegas/Chacras_de_Coria/bodega4.jpg') }}" alt="Bodega Alta Vista">
+          </a>
+        </figure>
+        <!-- Slide 4 -->
+        <figure class="slide">
+          <a href="#view4" aria-label="Ampliar imagen 4">
+            <img src="{{ url_for('static', filename='img/bodegas/Chacras_de_Coria/bodega3.jpg') }}" alt="Bodega Alta Vista">
+          </a>
+        </figure>
+      </div>
+    </div>
+
+    <!-- Flechas (mapeadas para ciclo infinito) -->
+    <div class="arrows" aria-hidden="true">
+      <!-- cuando está s1: prev->s4 | next->s2 -->
+      <label for="s4" class="prev p1">‹</label>
+      <label for="s2" class="next n1">›</label>
+
+      <!-- cuando está s2: prev->s1 | next->s3 -->
+      <label for="s1" class="prev p2">‹</label>
+      <label for="s3" class="next n2">›</label>
+
+      <!-- cuando está s3: prev->s2 | next->s4 -->
+      <label for="s2" class="prev p3">‹</label>
+      <label for="s4" class="next n3">›</label>
+
+      <!-- cuando está s4: prev->s3 | next->s1 -->
+      <label for="s3" class="prev p4">‹</label>
+      <label for="s1" class="next n4">›</label>
+    </div>
+
+    <!-- Dots -->
+    <div class="dots" role="tablist" aria-label="Cambiar imagen">
+      <label for="s1" role="tab" aria-controls="s1"></label>
+      <label for="s2" role="tab" aria-controls="s2"></label>
+      <label for="s3" role="tab" aria-controls="s3"></label>
+      <label for="s4" role="tab" aria-controls="s4"></label>
+    </div>
+  </section>
+
+  <!-- Descripción -->
+  <section class="dp-body">
+    <h2>Bodega Alta Vista</h2>
+    <p>
+        Alta Vista combina la elegancia francesa con el encanto mendocino. Es una bodega boutique donde el visitante puede disfrutar de una experiencia relajada y personalizada rodeado de naturaleza. Sus vinos, elaborados con uvas de viñedos propios, reflejan el terroir único de la región.
+    </p>
+    <h3>Ubicación y cómo llegar</h3>
+    <p>
+      Situada en Chacras de Coria, a unos 20 minutos de la ciudad de Mendoza. Se llega fácilmente por la Ruta 40 o incluso en bicicleta desde los alrededores, ya que la zona es muy turística y tranquila. Cuenta con estacionamiento para visitantes.
+    </p>
+    <h3>La experiencia</h3>
+    <p>
+     Las visitas incluyen recorrido por los viñedos, cavas subterráneas y degustación de vinos premium. Su ambiente relajado y su arquitectura colonial invitan a disfrutar sin apuro, en contacto directo con la naturaleza. También ofrecen experiencias gastronómicas al aire libre, como picnics entre los viñedos.
+    <h3>Recomendaciones</h3>
+    <p>
+     Ideal para visitarla al atardecer, cuando el sol ilumina los viñedos. Se recomienda reservar una degustación guiada o una experiencia de picnic en los jardines si está disponible. 
+    </p>
+    
+  </section>
+
+</div>
+
+<!-- Lightbox CSS-only (con botón Cerrar) -->
+<div id="view1" class="dp-overlay">
+  <a class="close" href="#cerrar" aria-label="Cerrar">×</a>
+  <img src="{{ url_for('static', filename='img/bodegas/Chacras_de_Coria/bodega.jpg') }}" alt="">
+</div>
+<div id="view2" class="dp-overlay">
+  <a class="close" href="#cerrar" aria-label="Cerrar">×</a>
+  <img src="{{ url_for('static', filename='img/bodegas/Chacras_de_Coria/bodega5.jpg') }}" alt="">
+</div>
+<div id="view3" class="dp-overlay">
+  <a class="close" href="#cerrar" aria-label="Cerrar">×</a>
+  <img src="{{ url_for('static', filename='img/bodegas/Chacras_de_Coria/bodega4.jpg') }}" alt="">
+</div>
+<div id="view4" class="dp-overlay">
+  <a class="close" href="#cerrar" aria-label="Cerrar">×</a>
+  <img src="{{ url_for('static', filename='img/bodegas/Chacras_de_Coria/bodega3.jpg') }}" alt="">
+</div>
+{% endblock %}

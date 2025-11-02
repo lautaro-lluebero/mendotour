@@ -1,0 +1,119 @@
+{% extends "layout.html" %}
+{% block title %}Parque General San Martin · MendoTour{% endblock %}
+{% block head_extra %}
+<link rel="stylesheet" href="{{ url_for('static', filename='detalle.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="detail-page">
+  <div class="dp-back">
+    <a class="btn" href="{{ url_for('routes_main.atractivos') }}">← Volver</a>
+  </div>
+
+  <!-- Título -->
+  <header class="dp-header">
+    <h1>Parque General San Martín</h1>
+  </header>
+
+  <!-- Carrusel (sin JS) -->
+  <section class="dp-carousel" aria-label="Galería de imágenes">
+    <!-- Radios de control -->
+    <input type="radio" name="slide" id="s1" checked>
+    <input type="radio" name="slide" id="s2">
+    <input type="radio" name="slide" id="s3">
+    <input type="radio" name="slide" id="s4">
+
+    <!-- Viewport -->
+    <div class="viewport">
+      <div class="track">
+        <!-- Slide 1 -->
+        <figure class="slide">
+          <a href="#view1" aria-label="Ampliar imagen 1">
+            <img src="{{ url_for('static', filename='img/atractivos/san_martin/s1.jpg') }}" alt="Parque General San Martín">
+          </a>
+        </figure>
+        <!-- Slide 2 -->
+        <figure class="slide">
+          <a href="#view2" aria-label="Ampliar imagen 2">
+            <img src="{{ url_for('static', filename='img/atractivos/san_martin/s2.jpg') }}" alt="Parque General San Martín">
+          </a>
+        </figure>
+        <!-- Slide 3 -->
+        <figure class="slide">
+          <a href="#view3" aria-label="Ampliar imagen 3">
+            <img src="{{ url_for('static', filename='img/atractivos/san_martin/s3.jpg') }}" alt="Parque General San Martín">
+          </a>
+        </figure>
+        <!-- Slide 4 -->
+        <figure class="slide">
+          <a href="#view4" aria-label="Ampliar imagen 4">
+            <img src="{{ url_for('static', filename='img/atractivos/san_martin/s4.jpg') }}" alt="Parque General San Martín">
+          </a>
+        </figure>
+      </div>
+    </div>
+
+    <!-- Flechas (mapeadas para ciclo infinito) -->
+    <div class="arrows" aria-hidden="true">
+      <!-- cuando está s1: prev->s4 | next->s2 -->
+      <label for="s4" class="prev p1">‹</label>
+      <label for="s2" class="next n1">›</label>
+
+      <!-- cuando está s2: prev->s1 | next->s3 -->
+      <label for="s1" class="prev p2">‹</label>
+      <label for="s3" class="next n2">›</label>
+
+      <!-- cuando está s3: prev->s2 | next->s4 -->
+      <label for="s2" class="prev p3">‹</label>
+      <label for="s4" class="next n3">›</label>
+
+      <!-- cuando está s4: prev->s3 | next->s1 -->
+      <label for="s3" class="prev p4">‹</label>
+      <label for="s1" class="next n4">›</label>
+    </div>
+
+    <!-- Dots -->
+    <div class="dots" role="tablist" aria-label="Cambiar imagen">
+      <label for="s1" role="tab" aria-controls="s1"></label>
+      <label for="s2" role="tab" aria-controls="s2"></label>
+      <label for="s3" role="tab" aria-controls="s3"></label>
+      <label for="s4" role="tab" aria-controls="s4"></label>
+    </div>
+  </section>
+
+  <!-- Descripción -->
+  <section class="dp-body">
+    <p>
+        El Parque General San Martín es el gran pulmón verde de la Ciudad de Mendoza. Diseñado por el paisajista Carlos Thays a comienzos del siglo XX, combina avenidas arboladas, rosedales, un lago artificial y hitos monumentales; es considerado el parque urbano artificial más grande de Sudamérica, con cientos de hectáreas forestadas a los pies de la precordillera.
+    </p>
+    <h3>Imperdibles:</h3>
+    <ul>
+        <li>Portones del Parque: ingreso icónico de hierro fundido, adquiridos en París a inicios del 1900; el arco central luce el cóndor y el escudo de Mendoza.</li>
+        <li>Cerro de la Gloria y Monumento al Ejército de Los Andes (Juan Manuel Ferrari), mirador clásico de la ciudad.</li>
+        <li>Lago del Parque, Rosedal y la Fuente de los Continentes (Mathurin Moreau, 1911), legado de la orfebrería francesa.</li>
+    </ul>
+    <h3>¿Por qué visitarlo?</h3>
+    <p>
+        Es ideal para caminar, trotar o andar en bici, hacer picnic junto al lago y subir al Cerro de la Gloria para vistas panorámicas de Mendoza y la cordillera. El parque también es testimonio de cómo la ciudad transformó un entorno árido en bosque urbano mediante acequias y forestación planificada.
+    </p>
+    
+</div>
+
+<!-- Lightbox CSS-only (con botón Cerrar) -->
+<div id="view1" class="dp-overlay">
+  <a class="close" href="#cerrar" aria-label="Cerrar">×</a>
+  <img src="{{ url_for('static', filename='img/atractivos/san_martin/s1.jpg') }}" alt="">
+</div>
+<div id="view2" class="dp-overlay">
+  <a class="close" href="#cerrar" aria-label="Cerrar">×</a>
+  <img src="{{ url_for('static', filename='img/atractivos/san_martin/s2.jpg') }}" alt="">
+</div>
+<div id="view3" class="dp-overlay">
+  <a class="close" href="#cerrar" aria-label="Cerrar">×</a>
+  <img src="{{ url_for('static', filename='img/atractivos/san_martin/s3.jpg') }}" alt="">
+</div>
+<div id="view4" class="dp-overlay">
+  <a class="close" href="#cerrar" aria-label="Cerrar">×</a>
+  <img src="{{ url_for('static', filename='img/atractivos/san_martin/s4.jpg') }}" alt="">
+</div>
+{% endblock %}

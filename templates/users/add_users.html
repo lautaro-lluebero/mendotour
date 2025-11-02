@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block content %}
+<h3>Agregar Usuario</h3>
+<form action="{{ url_for('users.add_user') }}" method="post">
+    <label>Usuario:</label><br />
+    <input type="text" name="username" required><br />
+    <label>Email:</label><br />
+    <input type="email" name="email" required><br />
+    <label>Contraseña:</label><br />
+    <input type="password" name="password" required><br /><br />
+    <button type="submit">Agregar</button>
+</form>
+<a href="{{ url_for('routes_users.get_users') }}">Volver</a>
+{% endblock %}

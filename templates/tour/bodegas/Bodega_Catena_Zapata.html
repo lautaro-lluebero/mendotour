@@ -1,0 +1,123 @@
+{% extends "layout.html" %}
+{% block title %}Bodega Catena Zapata · MendoTour{% endblock %}
+{% block head_extra %}
+<link rel="stylesheet" href="{{ url_for('static', filename='detalle.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="detail-page">
+  <div class="dp-back">
+    <a class="btn" href="{{ url_for('routes_main.bodegas') }}">← Volver</a>
+  </div>
+
+  <!-- Título -->
+  <header class="dp-header">
+    <h1>Bodega Catena Zapata</h1>
+  </header>
+
+  <!-- Carrusel (sin JS) -->
+  <section class="dp-carousel" aria-label="Galería de imágenes">
+    <!-- Radios de control -->
+    <input type="radio" name="slide" id="s1" checked>
+    <input type="radio" name="slide" id="s2">
+    <input type="radio" name="slide" id="s3">
+    <input type="radio" name="slide" id="s4">
+
+    <!-- Viewport -->
+    <div class="viewport">
+      <div class="track">
+        <!-- Slide 1 -->
+        <figure class="slide">
+          <a href="#view1" aria-label="Ampliar imagen 1">
+            <img src="{{ url_for('static', filename='img/bodegas/Lujan_de_Cuyo/bodega5.jpg') }}" alt="Bodega Catena Zapata">
+          </a>
+        </figure>
+        <!-- Slide 2 -->
+        <figure class="slide">
+          <a href="#view2" aria-label="Ampliar imagen 2">
+            <img src="{{ url_for('static', filename='img/bodegas/Lujan_de_Cuyo/bodega2.jpg') }}" alt="Bodega Catena Zapata">
+          </a>
+        </figure>
+        <!-- Slide 3 -->
+        <figure class="slide">
+          <a href="#view3" aria-label="Ampliar imagen 3">
+            <img src="{{ url_for('static', filename='img/bodegas/Lujan_de_Cuyo/bodega3.jpg') }}" alt="Bodega Catena Zapata">
+          </a>
+        </figure>
+        <!-- Slide 4 -->
+        <figure class="slide">
+          <a href="#view4" aria-label="Ampliar imagen 4">
+            <img src="{{ url_for('static', filename='img/bodegas/Lujan_de_Cuyo/bodega4.jpg') }}" alt="Bodega Catena Zapata">
+          </a>
+        </figure>
+      </div>
+    </div>
+
+    <!-- Flechas (mapeadas para ciclo infinito) -->
+    <div class="arrows" aria-hidden="true">
+      <!-- cuando está s1: prev->s4 | next->s2 -->
+      <label for="s4" class="prev p1">‹</label>
+      <label for="s2" class="next n1">›</label>
+
+      <!-- cuando está s2: prev->s1 | next->s3 -->
+      <label for="s1" class="prev p2">‹</label>
+      <label for="s3" class="next n2">›</label>
+
+      <!-- cuando está s3: prev->s2 | next->s4 -->
+      <label for="s2" class="prev p3">‹</label>
+      <label for="s4" class="next n3">›</label>
+
+      <!-- cuando está s4: prev->s3 | next->s1 -->
+      <label for="s3" class="prev p4">‹</label>
+      <label for="s1" class="next n4">›</label>
+    </div>
+
+    <!-- Dots -->
+    <div class="dots" role="tablist" aria-label="Cambiar imagen">
+      <label for="s1" role="tab" aria-controls="s1"></label>
+      <label for="s2" role="tab" aria-controls="s2"></label>
+      <label for="s3" role="tab" aria-controls="s3"></label>
+      <label for="s4" role="tab" aria-controls="s4"></label>
+    </div>
+  </section>
+
+  <!-- Descripción -->
+  <section class="dp-body">
+    <h2>Bodega Catena Zapata</h2>
+    <p>
+     Considerada un ícono del vino argentino, Catena Zapata destaca por su imponente arquitectura en forma de pirámide y su compromiso con la excelencia. Es una parada obligada para quienes buscan conocer la historia y evolución del Malbec en Mendoza. Fundada en 1902 por Nicolás Catena, la bodega ha sido pionera en la innovación vitivinícola, combinando técnicas tradicionales con modernas prácticas enológicas. Sus viñedos, ubicados en altitudes que varían entre 900 y 1,500 metros sobre el nivel del mar, permiten el cultivo de uvas de alta calidad, dando lugar a vinos reconocidos internacionalmente por su complejidad y elegancia.
+    </p>
+    <h3>Ubicación y cómo llegar</h3>
+    <p>
+      Se encuentra en Agrelo, Luján de Cuyo, a unos 30 km de la ciudad de Mendoza. El acceso es sencillo por la Ruta Nacional 7 y luego la Provincial 15, bien señalizada. Se puede llegar en auto, remis o contratando excursiones enoturísticas que incluyen traslado y degustación.
+    </p>
+    <h3>La experiencia</h3>
+    <p>
+      Visitar Catena Zapata es adentrarse en la historia del vino argentino. Su arquitectura en forma de pirámide precolombina impresiona desde lejos, y cada sala del recorrido está pensada para conectar al visitante con la esencia del Malbec. La cata guiada permite apreciar la elegancia y profundidad de sus vinos, mientras se disfruta de una vista espectacular de la Cordillera de los Andes.
+    <h3>Recomendaciones</h3>
+    <p>
+        Conviene reservar con anticipación, especialmente en temporada alta. Se recomienda llevar calzado cómodo y protección solar, ya que parte del recorrido incluye los viñedos al aire libre.
+    </p>
+    
+  </section>
+
+</div>
+
+<!-- Lightbox CSS-only (con botón Cerrar) -->
+<div id="view1" class="dp-overlay">
+  <a class="close" href="#cerrar" aria-label="Cerrar">×</a>
+  <img src="{{ url_for('static', filename='img/bodegas/Lujan_de_Cuyo/bodega5.jpg') }}" alt="">
+</div>
+<div id="view2" class="dp-overlay">
+  <a class="close" href="#cerrar" aria-label="Cerrar">×</a>
+  <img src="{{ url_for('static', filename='img/bodegas/Lujan_de_Cuyo/bodega2.jpg') }}" alt="">
+</div>
+<div id="view3" class="dp-overlay">
+  <a class="close" href="#cerrar" aria-label="Cerrar">×</a>
+  <img src="{{ url_for('static', filename='img/bodegas/Lujan_de_Cuyo/bodega3.jpg') }}" alt="">
+</div>
+<div id="view4" class="dp-overlay">
+  <a class="close" href="#cerrar" aria-label="Cerrar">×</a>
+  <img src="{{ url_for('static', filename='img/bodegas/Lujan_de_Cuyo/bodega4.jpg') }}" alt="">
+</div>
+{% endblock %}

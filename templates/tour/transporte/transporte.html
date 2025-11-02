@@ -1,0 +1,183 @@
+{% extends "layout.html" %}
+{% block title %}Cómo moverte por la ciudad · MendoTour{% endblock %}
+
+{% block head_extra %}
+<link rel="stylesheet" href="{{ url_for('static', filename='transporte_ruta.css') }}">
+
+<!-- Leaflet (lo incluyo acá para que no falte; si ya está en layout.html, no pasa nada) -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<style>
+/* CONTENEDOR GENERAL */
+.transport-section {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  margin: 4rem auto;
+  max-width: 1200px;
+}
+
+/* TARJETA */
+.transport-card {
+  background-color: #f5c16c;
+  border-radius: 18px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.20);
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+/* IMÁGENES (no aplica al mapa) */
+.transport-card img:not(.route-map) {
+  width: 380px;
+  height: 230px;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+/* TEXTO */
+.transport-info { flex: 1; }
+.transport-info h2 {
+  color: #623800;
+  font-size: 2.3rem;
+  margin-bottom: 1rem;
+}
+.transport-info p, .transport-info ul {
+  font-size: 1.3rem;
+  line-height: 1.6;
+  color: #3b2a00;
+}
+
+/* MAPA DEL TRANVÍA — NO RECORTAR */
+.route-map {
+  margin-top: 1.2rem;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 10px;
+  display: block;
+}
+
+/* CONTENEDOR DEL MAPA */
+#map {
+  height: 450px;
+  border-radius: 12px;
+  margin-top: 1rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,.15);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .transport-card { flex-direction: column; text-align: center; }
+  .transport-card img:not(.route-map) { width: 100%; height: auto; }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <h1>Cómo moverte por la ciudad</h1>
+  <p>Tranvía, colectivos, taxis y apps de viaje en Mendoza.</p>
+</section>
+
+<section class="transport-section">
+
+  <!-- TRANVÍA -->
+  <div class="transport-card">
+    <img src="{{ url_for('static', filename='img/transporte/tranvia.jpeg') }}" alt="Tranvía de Mendoza">
+    <div class="transport-info">
+      <h2>Tranvía</h2>
+      <p>Conecta Maipú con Ciudad de Mendoza, pasando por barrios tradicionales y zonas comerciales.</p>
+    
+    </div>
+    <!-- MAPA INTERACTIVO -->
+  <div>
+    <h2 style="text-align:center; color:#623800;">Recorrido Interactivo del Tranvía</h2>
+    <div id="map"></div>
+    <script>
+
+// Inicializar mapa centrado en el tramo principal
+const map = L.map('map').setView([-32.90, -68.84], 12);
+
+// OpenStreetMap layer
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; OpenStreetMap',
+  maxZoom: 19
+}).addTo(map);
+
+// Recorrido REAL marcado por vos con Leaflet
+const recorridoTranvia = [
+  [-32.83602148469606, -68.83591674669381],
+  [-32.839757832447155, -68.83683932822852],
+  [-32.84741548541535, -68.83882420067798],
+  [-32.85232732938656, -68.83997750065838],
+  [-32.85504445540556, -68.84055152760193],
+  [-32.85978539097842, -68.84211257111022],
+  [-32.86640937923618, -68.84380770439802],
+  [-32.8700365476108, -68.8447733431242],
+  [-32.87638443358359, -68.84645778749275],
+  [-32.87937182223011, -68.8472410253139],
+  [-32.882849303561535, -68.84821729807372],
+  [-32.890388321500666, -68.85015925517891],
+  [-32.896829216361944, -68.85182754926936],
+  [-32.9044952552096, -68.85296479092287],
+  [-32.908652554471516, -68.85196701415893],
+  [-32.915983868140664, -68.8465059802934],
+  [-32.921490760963394, -68.83981120227382],
+  [-32.92692616479311, -68.83322899078406],
+  [-32.93286559137724, -68.82593323471394],
+  [-32.93826305128909, -68.81933521295174],
+  [-32.94168904445802, -68.81515636124414],
+  [-32.947392648264206, -68.80818261923102],
+  [-32.95251601561102, -68.80120866569887],
+  [-32.954910313610604, -68.7952703153453],
+  [-32.95711125960515, -68.78951434683376],
+  [-32.95967707379721, -68.78269607315147]
+];
+
+// Línea roja en el mapa
+const ruta = L.polyline(recorridoTranvia, {
+  color: "red",
+  weight: 6,
+  opacity: 0.9
+}).addTo(map);
+
+// Acercar el mapa a la línea automáticamente
+map.fitBounds(ruta.getBounds());
+
+</script>
+
+  </div>
+  </div>
+
+  <!-- COLECTIVOS -->
+  <div class="transport-card">
+    <img src="{{ url_for('static', filename='img/transporte/colectivo.jpeg') }}" alt="Colectivo urbano de Mendoza">
+    <div class="transport-info">
+      <h2>Colectivos</h2>
+      <p>Conectan la ciudad con barrios, centros comerciales y puntos turísticos. Durante el recorrido pueden apreciarse plazas arboladas, arquitectura histórica y vistas de la Cordillera.</p>
+    </div>
+  </div>
+
+  <!-- TAXIS / APPS -->
+  <div class="transport-card">
+    <img src="{{ url_for('static', filename='img/transporte/taxi.jpg') }}" alt="Taxis y apps de viaje en Mendoza">
+    <div class="transport-info">
+      <h2>Taxis y Apps</h2>
+      <p>Podés pedir taxis desde paradas centrales o usar apps desde el celular.</p>
+      <p style="margin-top: .5rem; font-weight: bold;">Apps disponibles:</p>
+      <ul>
+        <li>Uber</li>
+        <li>Cabify</li>
+        <li>BEAT (en algunas zonas)</li>
+      </ul>
+    </div>
+  </div>
+
+  
+
+</section>
+
+{% endblock %}

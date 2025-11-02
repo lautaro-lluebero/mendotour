@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block title %}Bodegas de Mendoza · MendoTour{% endblock %}
+{% block head_extra %}
+<link rel="stylesheet" href="{{ url_for('static', filename='oferta.css') }}">
+{% endblock %}
+
+{% block content %}
+  <header class="page-hero">
+    <h1>Bodegas de Mendoza</h1>
+  </header>
+
+  <section class="grid-cards" aria-label="Nombre de la categoría">
+    <!-- TARJETA 1 -->
+    <a class="card" href="{{ url_for('routes_main.detalle_Lujan') }}">
+      <img src="{{ url_for('static', filename='img/bodegas/Lujan_de_Cuyo/bodega.jpg') }}" alt="Bodega Catena Zapata">
+      <h3>Bodega Catena Zapata</h3>
+    </a>
+
+    <!-- TARJETA 2 -->
+    <a class="card" href="{{ url_for('routes_main.detalle_Valle') }}">
+      <img src="{{ url_for('static', filename='img/bodegas/Valle_de_Uco/bodega.jpg') }}" alt="Bodega Salentein">
+      <h3>Bodega Salentein</h3>
+    </a>
+
+     <!-- TARJETA 3 -->
+    <a class="card" href="{{ url_for('routes_main.detalle_Maipu') }}">
+      <img src="{{ url_for('static', filename='img/bodegas/Maipu/bodega2.jpg') }}" alt="Bodega López">
+      <h3>Bodega López</h3>
+    </a>
+
+    <!-- TARJETA 4 -->
+    <a class="card" href="{{ url_for('routes_main.detalle_Chacras') }}">
+      <img src="{{ url_for('static', filename='img/bodegas/chacras_de_coria/bodega2.jpg') }}" alt="Bodega Alta Vista">
+      <h3>Bodega Alta Vista</h3>
+    </a>
+
+  </section>
+{% endblock %}

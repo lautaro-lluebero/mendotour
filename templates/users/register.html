@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+{% block title %}Registrarse · MendoTour{% endblock %}
+{% block head_extra %}
+<link rel="stylesheet" href="{{ url_for('static', filename='auth.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="auth-wrap" aria-labelledby="register-title">
+  <div class="auth-card">
+    <div class="auth-brand">
+      <img src="{{ url_for('static', filename='img/logo.png') }}" alt="MendoTour">
+    </div>
+
+    <h2 id="register-title" class="auth-title">Crear cuenta</h2>
+    {% if error %}
+      <div class="auth-alert error" role="alert">{{ error }}</div>
+    {% endif %}
+
+    <form class="auth-form" method="post" action="{{ url_for('routes_users.register') }}">
+      <label for="username">Usuario</label>
+      <input id="username" name="username" type="text" required autocomplete="username" placeholder="Tu nombre de usuario">
+
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" required autocomplete="email" placeholder="tu@correo.com">
+
+      <label for="password">Contraseña</label>
+      <input id="password" name="password" type="password" required autocomplete="new-password" placeholder="Mínimo 6 caracteres">
+
+      <!--Nuevo campo: tipo de usuario -->
+      <label for="rol">Tipo de usuario</label>
+      <select id="rol" name="rol" required>
+        <option value="cliente">Cliente</option>
+        <option value="administrador">Administrador</option>
+      </select>
+
+      <button class="auth-btn" type="submit">Registrarse</button>
+    </form>
+
+    <div class="form-actions">
+      <div class="form-actions-left">
+        <a class="btn" href="{{ url_for('routes_auth.login') }}">Ir a Iniciar sesión</a> 
+      </div>
+
+      <div class="form-actions-right">
+        <a class="btn" href="{{ url_for('routes_users.get_users') }}">Ver usuarios</a>
+      </div>
+    </div>
+
+    <p class="auth-alt">
+      ¿Ya tenés cuenta?
+      <a href="{{ url_for('routes_auth.login') }}" class="link">Ingresá</a>
+    </p>
+    <p class="auth-back">
+      <a href="{{ url_for('home') }}" class="link">← Volver al inicio</a>
+    </p>
+  </div>
+</section>
+{% endblock %}

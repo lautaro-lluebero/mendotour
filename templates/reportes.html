@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block title %}Reportes · MendoTour{% endblock %}
+
+{% block content %}
+<div class="container mt-4" style="max-width: 800px; margin: 2rem auto;">
+  <h2>Generar Reporte</h2>
+
+  <form method="POST" class="mt-3" style="background:#fff3cd; padding:1rem 1.25rem; border-radius:10px; border:2px solid rgba(0,0,0,0.1);">
+    <div class="mb-3" style="display:flex; flex-direction:column; gap:0.5rem;">
+      <label for="tipo" class="form-label" style="font-weight:600; color:#4a3200;">Tipo de reporte</label>
+      <input
+        type="text"
+        name="tipo"
+        id="tipo"
+        class="form-control"
+        placeholder="Ej: Reporte de usuarios"
+        required
+        style="padding:0.6rem 0.8rem; border-radius:8px; border:1px solid #b88a00; font-size:1rem;"
+      >
+    </div>
+
+    <button type="submit"
+      class="btn btn-primary"
+      style="background:#e69500; border:none; color:#fff; font-weight:600; padding:0.6rem 1rem; border-radius:8px; cursor:pointer;">
+      Generar reporte
+    </button>
+  </form>
+
+  {% if historial %}
+    <hr style="margin:2rem 0; border:none; border-top:2px solid rgba(0,0,0,0.1);" />
+
+    <h3>Historial de reportes</h3>
+
+    <div style="overflow-x:auto;">
+      <table class="table mt-3" style="width:100%; border-collapse:collapse; background:#fff8e1; border-radius:10px; overflow:hidden;">
+        <thead>
+          <tr style="background:#ffe9a8;">
+            <th style="padding:0.75rem; text-align:left; border-bottom:2px solid rgba(0,0,0,0.1);">ID</th>
+            <th style="padding:0.75rem; text-align:left; border-bottom:2px solid rgba(0,0,0,0.1);">Usuario</th>
+            <th style="padding:0.75rem; text-align:left; border-bottom:2px solid rgba(0,0,0,0.1);">Tipo</th>
+            <th style="padding:0.75rem; text-align:left; border-bottom:2px solid rgba(0,0,0,0.1);">Fecha</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for r in historial %}
+          <tr>
+            <td style="padding:0.75rem; border-bottom:1px solid rgba(0,0,0,0.07);">{{ r.id }}</td>
+            <td style="padding:0.75rem; border-bottom:1px solid rgba(0,0,0,0.07);">{{ r.user.username }}</td>
+            <td style="padding:0.75rem; border-bottom:1px solid rgba(0,0,0,0.07);">{{ r.tipo }}</td>
+            <td style="padding:0.75rem; border-bottom:1px solid rgba(0,0,0,0.07);">
+              {{ r.fecha.strftime("%d/%m/%Y %H:%M") }}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <p style="margin-top:2rem; font-size:0.95rem; color:#4a3200; background:#fff3cd; border:1px solid rgba(0,0,0,0.1); padding:0.75rem 1rem; border-radius:8px;">
+      Sólo los administradores pueden ver el historial de reportes.
+    </p>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block title %}Actividades Recreativas · MendoTour{% endblock %}
+{% block head_extra %}
+<link rel="stylesheet" href="{{ url_for('static', filename='oferta.css') }}">
+{% endblock %}
+
+{% block content %}
+  <header class="page-hero">
+    <h1>Actividades Recreativas</h1>
+  </header>
+
+  <section class="grid-cards" aria-label="Nombre de la categoría">
+    <!-- TARJETA 1 -->
+    <a class="card" href="{{ url_for('routes_main.detalle_rafting') }}">
+      <img src="{{ url_for('static', filename='img/actividades/rafting/rafting.jpg') }}" alt="Rafting">
+      <h3>Rafting</h3>
+    </a>
+
+    <!-- TARJETA 2 -->
+    <a class="card" href="{{ url_for('routes_main.detalle_cabalgata') }}">
+      <img src="{{ url_for('static', filename='img/actividades/cabalgata/cabalgata.jpg') }}" alt="Cabalgata en Mendoza">
+      <h3>Cabalgata en Mendoza</h3>
+    </a>
+
+     <!-- TARJETA 3 -->
+    <a class="card" href="{{ url_for('routes_main.detalle_museo') }}">
+      <img src="{{ url_for('static', filename='img/actividades/museo/museo2.jpg') }}" alt="Museo del Vino">
+      <h3>Museo del Vino</h3>
+    </a>
+
+    <!-- TARJETA 4 -->
+    <a class="card" href="{{ url_for('routes_main.detalle_parque') }}">
+      <img src="{{ url_for('static', filename='img/actividades/parque/parque.jpg') }}" alt="Parque General San Martín">
+      <h3>Parque General San Martín</h3>
+    </a>
+
+     <!-- TARJETA 5-->
+    <a class="card" href="{{ url_for('routes_main.detalle_termas') }}">
+      <img src="{{ url_for('static', filename='img/actividades/termas/termas.jpg') }}" alt="Termas de Cacheuta">
+      <h3>Termas de Cacheuta</h3>
+    </a>
+
+     <!-- TARJETA 6 -->
+    <a class="card" href="{{ url_for('routes_main.detalle_trekking') }}">
+      <img src="{{ url_for('static', filename='img/actividades/trekking/trekking2.jpg') }}" alt="Trekking en Mendoza">
+      <h3>Trekking en Mendoza</h3>
+    </a>
+  </section>
+{% endblock %}

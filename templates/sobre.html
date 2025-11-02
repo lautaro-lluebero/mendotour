@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+{% block title %}Sobre Nosotros · MendoTour{% endblock %}
+
+{% block head_extra %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='sobre.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="about-hero" aria-labelledby="about-title">
+  <div class="about-panel">
+    <img class="about-logo" src="/static/img/inicio/logo.png" alt="MendoTour">
+    <h1 id="about-title" class="about-heading">MENDOTOUR</h1>
+    <p class="about-kicker">Información sobre nosotros…</p>
+  </div>
+</section>
+
+<section class="about-sections container">
+  <div class="about-grid">
+    <article class="about-card">
+      <h2>Quiénes somos</h2>
+      <p>
+        Somos un equipo mendocino apasionado por mostrar lo mejor de nuestra provincia.
+        Reunimos experiencias, recomendaciones y datos útiles para que planifiques tu
+        viaje sin vueltas.
+      </p>
+    </article>
+
+    <article class="about-card">
+      <h2>Misión</h2>
+      <p>
+        Facilitar que viajeros y locales descubran Mendoza con información confiable,
+        ordenada y siempre actualizada.
+      </p>
+    </article>
+
+    <article class="about-card">
+      <h2>Visión</h2>
+      <p>
+        Convertirnos en la guía digital de referencia de Mendoza, impulsando el turismo
+        responsable y el desarrollo local.
+      </p>
+    </article>
+
+    <article class="about-card">
+      <h2>Valores</h2>
+      <ul class="values">
+        <li>Hospitalidad y cercanía</li>
+        <li>Transparencia</li>
+        <li>Apoyo a emprendedores locales</li>
+        <li>Sustentabilidad</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="team container" aria-labelledby="team-title">
+  <h2 id="team-title">Nuestro equipo</h2>
+  <div class="team-grid">
+    <!-- Ejemplos (reemplazá por tu gente/fotos) -->
+    <article class="member">
+      <div class="avatar" aria-hidden="true">FI</div>
+      <h3>Francisco Iglesias</h3>
+      <p>Developer</p>
+    </article>
+
+    <article class="member">
+      <div class="avatar" aria-hidden="true">LL</div>
+      <h3>Lautaro Lluebero</h3>
+      <p>Developer</p>
+    </article>
+
+    <article class="member">
+      <div class="avatar" aria-hidden="true">MM</div>
+      <h3>Máximo Mercau</h3>
+      <p>Developer</p>
+    </article>
+
+    <article class="member">
+      <div class="avatar" aria-hidden="true">SB</div>
+      <h3>Santino Barrionuevo</h3>
+      <p>Developer</p>
+    </article>
+  </div>
+</section>
+
+<section class="about-cta container" aria-labelledby="cta-title">
+  <h2 id="cta-title">¿Querés colaborar o aparecer en MendoTour?</h2>
+  <p>Si tenés un hospedaje, bodega, restaurante o actividad, escribinos y te ayudamos a difundirlo.</p>
+  <a class="cta-btn" href="mailto:contacto@mendotour.com">Escribir a contacto@mendotour.com</a>
+</section>
+{% endblock %}

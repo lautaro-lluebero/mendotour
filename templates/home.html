@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block title %}Inicio · MendoTour{% endblock %}
+{% block head_extra %}
+<link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="content" aria-labelledby="home-heading">
+  <h1 id="home-heading">Descubrí Mendoza con experiencias únicas</h1>
+
+  <div class="cards" aria-label="Accesos rápidos">
+    <a class="card-link" href="{{ url_for('routes_main.restaurantes') }}" aria-label="Ir a Restaurantes">
+      <article class="card">
+        <img src="{{ url_for('static', filename='img/inicio/food.png') }}" alt="Restaurantes">
+        <h3>Encuentra los mejores restaurantes de Mendoza.</h3>
+      </article>
+    </a>
+
+    <a class="card-link" href="{{ url_for('routes_main.transporte') }}" aria-label="Ir a Medios de transportes">
+      <article class="card">
+        <img src="{{ url_for('static', filename='img/inicio/move.png') }}" alt="Movilidad">
+        <h3>Cómo moverte por la ciudad.</h3>
+      </article>
+    </a>
+
+    <a class="card-link" href="{{ url_for('routes_main.atractivos') }}" aria-label="Ir a Atractivos turísticos">
+      <article class="card">
+        <img src="{{ url_for('static', filename='img/inicio/places.png') }}" alt="Lugares de interés">
+        <h3>Lugares de interés y paisajes destacados.</h3>
+      </article>
+    </a>
+
+    <a class="card-link" href="{{ url_for('routes_main.hospedajes') }}" aria-label="Ir a Hospedajes">
+      <article class="card">
+        <img src="{{ url_for('static', filename='img/inicio/hotel.png') }}" alt="Hospedajes">
+        <h3>Hospedajes (hoteles, cabañas y alojamientos).</h3>
+      </article>
+    </a>
+  </div>
+</section>
+
+{% endblock %}

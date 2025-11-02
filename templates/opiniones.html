@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block title %}Opiniones · MendoTour{% endblock %}
+
+{% block content %}
+<section class="opiniones-page opiniones-xl full-bleed" aria-labelledby="opiniones-heading">
+  <h1 id="opiniones-heading" class="sr-only">Opiniones</h1>
+
+  <div class="opiniones-list">
+    {% for item in opiniones %}
+    <article class="op-card" aria-label="opinion de {{ item.username }}">
+      <div class="op-avatar" aria-hidden="true">👤</div>
+      <div class="op-bubble">
+        <header class="op-header">
+          <span class="op-user">{{ item.username }}</span>
+          <time class="op-time" datetime="{{ item.created_at.isoformat() }}">
+            {{ item.created_at.strftime('%d/%m/%Y %H:%M') }}
+          </time>
+        </header>
+        <p class="op-text">{{ item.contenido }}</p>
+      </div>
+    </article>
+    {% else %}
+      <p class="op-empty">Todavía no hay opiniones. ¡Sé el primero en opinar!</p>
+    {% endfor %}
+  </div>
+
+  <div class="op-input-wrap">
+    {% if session.get('logged_in') %}
+      <form class="op-form" method="post" action="{{ url_for('routes_opiniones.crear') }}">
+        <textarea name="contenido" rows="3" placeholder="Opinar/Comentar..." required></textarea>
+        <button type="submit" class="op-send" aria-label="Enviar opinión">➤</button>
+      </form>
+    {% else %}
+      <a class="btn opinion-btn outline"
+         href="{{ url_for('routes_auth.login', next=url_for('routes_opiniones.index')) }}">
+        Iniciá sesión para opinar
+      </a>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

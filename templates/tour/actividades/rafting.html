@@ -1,0 +1,129 @@
+{% extends "layout.html" %}
+{% block title %}Rafting · MendoTour{% endblock %}
+{% block head_extra %}
+<link rel="stylesheet" href="{{ url_for('static', filename='detalle.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="detail-page">
+  <div class="dp-back">
+    <a class="btn" href="{{ url_for('routes_main.actividades') }}">← Volver</a>
+  </div>
+
+  <!-- Título -->
+  <header class="dp-header">
+    <h1>Rafting</h1>
+  </header>
+
+  <!-- Carrusel (sin JS) -->
+  <section class="dp-carousel" aria-label="Galería de imágenes">
+    <!-- Radios de control -->
+    <input type="radio" name="slide" id="s1" checked>
+    <input type="radio" name="slide" id="s2">
+    <input type="radio" name="slide" id="s3">
+    <input type="radio" name="slide" id="s4">
+
+    <!-- Viewport -->
+    <div class="viewport">
+      <div class="track">
+        <!-- Slide 1 -->
+        <figure class="slide">
+          <a href="#view1" aria-label="Ampliar imagen 1">
+            <img src="{{ url_for('static', filename='img/actividades/rafting/rafting.jpg') }}" alt="Rafting en Mendoza">
+          </a>
+        </figure>
+        <!-- Slide 2 -->
+        <figure class="slide">
+          <a href="#view2" aria-label="Ampliar imagen 2">
+            <img src="{{ url_for('static', filename='img/actividades/rafting/rafting2.jpg') }}" alt="Rafting en Mendoza">
+          </a>
+        </figure>
+        <!-- Slide 3 -->
+        <figure class="slide">
+          <a href="#view3" aria-label="Ampliar imagen 3">
+            <img src="{{ url_for('static', filename='img/actividades/rafting/rafting3.jpg') }}" alt="Rafting en Mendoza">
+          </a>
+        </figure>
+        <!-- Slide 4 -->
+        <figure class="slide">
+          <a href="#view4" aria-label="Ampliar imagen 4">
+            <img src="{{ url_for('static', filename='img/actividades/rafting/rafting4.jpg') }}" alt="Rafting en Mendoza">
+          </a>
+        </figure>
+      </div>
+    </div>
+
+    <!-- Flechas (mapeadas para ciclo infinito) -->
+    <div class="arrows" aria-hidden="true">
+      <!-- cuando está s1: prev->s4 | next->s2 -->
+      <label for="s4" class="prev p1">‹</label>
+      <label for="s2" class="next n1">›</label>
+
+      <!-- cuando está s2: prev->s1 | next->s3 -->
+      <label for="s1" class="prev p2">‹</label>
+      <label for="s3" class="next n2">›</label>
+
+      <!-- cuando está s3: prev->s2 | next->s4 -->
+      <label for="s2" class="prev p3">‹</label>
+      <label for="s4" class="next n3">›</label>
+
+      <!-- cuando está s4: prev->s3 | next->s1 -->
+      <label for="s3" class="prev p4">‹</label>
+      <label for="s1" class="next n4">›</label>
+    </div>
+
+    <!-- Dots -->
+    <div class="dots" role="tablist" aria-label="Cambiar imagen">
+      <label for="s1" role="tab" aria-controls="s1"></label>
+      <label for="s2" role="tab" aria-controls="s2"></label>
+      <label for="s3" role="tab" aria-controls="s3"></label>
+      <label for="s4" role="tab" aria-controls="s4"></label>
+    </div>
+  </section>
+
+  <!-- Descripción -->
+  <section class="dp-body">
+    <h2>Rafting en Mendoza</h2>
+    <p>
+      El rafting en Mendoza es una de las experiencias más emocionantes para disfrutar de la naturaleza y la aventura. Se realiza principalmente en el río Mendoza, un curso de agua que nace del deshielo de la cordillera de los Andes y atraviesa imponentes paisajes de montañas, cañones y viñedos.
+    </p>
+    <h3>Ubicación y cómo llegar</h3>
+    <p>
+      La actividad se lleva a cabo en la zona de Potrerillos, a unos 70 km de la ciudad de Mendoza (aproximadamente una hora en auto). Desde la capital, se puede llegar por la Ruta Nacional 7, disfrutando de un camino panorámico con vistas a las montañas. Existen servicios de transporte y excursiones que incluyen traslados ida y vuelta desde la ciudad.
+    </p>
+    <h3>Mejor época para hacerlo</h3>
+    <p>
+      El rafting se puede realizar durante todo el año, aunque la mejor temporada es de octubre a abril, cuando el caudal del río aumenta por el deshielo y los paisajes se muestran en su máximo esplendor.
+    </p>
+    <h3>Recomendaciones</h3>
+    <p>
+    <ul>  
+      <li>Llevar ropa cómoda y que se pueda mojar, traje de baño y toalla.</li>
+      <li>Usar protector solar y calzado antideslizante.</li>
+      <li>Evitar llevar objetos de valor durante la actividad.</li>
+      <li>Seguir siempre las instrucciones de los guías, que brindan el equipo completo (chaleco salvavidas, casco y remo).</li>
+    </ul>
+    </p>
+    
+  </section>
+
+</div>
+
+<!-- Lightbox CSS-only (con botón Cerrar) -->
+<div id="view1" class="dp-overlay">
+  <a class="close" href="#cerrar" aria-label="Cerrar">×</a>
+  <img src="{{ url_for('static', filename='img/actividades/rafting/rafting.jpg') }}" alt="">
+</div>
+<div id="view2" class="dp-overlay">
+  <a class="close" href="#cerrar" aria-label="Cerrar">×</a>
+  <img src="{{ url_for('static', filename='img/actividades/rafting/rafting2.jpg') }}" alt="">
+</div>
+<div id="view3" class="dp-overlay">
+  <a class="close" href="#cerrar" aria-label="Cerrar">×</a>
+  <img src="{{ url_for('static', filename='img/actividades/rafting/rafting3.jpg') }}" alt="">
+</div>
+<div id="view4" class="dp-overlay">
+  <a class="close" href="#cerrar" aria-label="Cerrar">×</a>
+  <img src="{{ url_for('static', filename='img/actividades/rafting/rafting4.jpg') }}" alt="">
+</div>
+{% endblock %}

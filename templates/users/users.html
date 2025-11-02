@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block title %}Usuarios · MendoTour{% endblock %}
+
+{% block content %}
+<h2>Lista de Usuarios</h2>
+
+<div class="users-actions" style="margin:10px 0 14px;">
+  <a class="btn create" href="{{ url_for('routes_users.register') }}">Registrar nuevo usuario</a>
+</div>
+
+<div class="table-wrap">
+  <table class="table users-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Usuario</th>
+        <th>Email</th>
+        <th>Rol</th>           <!-- NUEVA COLUMNA -->
+        <th>Contraseña</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% set role_map = {'admin': 'Administrador', 'user': 'Usuario', 'editor': 'Editor'} %}
+      {% for user in users %}
+      <tr>
+        <td>{{ user.id }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.email }}</td>
+        <td>
+  <span class="role-pill">
+    {{ (user.rol or 'cliente')|capitalize }}
+  </span>
+</td>
+        <td>••••••••</td>  {# no mostramos el valor real #}
+        <td class="actions">
+          <a class="btn edit" href="{{ url_for('routes_users.edit_user', id=user.id) }}">Editar</a>
+
+          <form action="{{ url_for('routes_users.delete_user', id=user.id) }}" method="post" style="display:inline;">
+            <button type="submit" class="btn delete" onclick="return confirm('¿Eliminar este usuario?');">Eliminar</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
