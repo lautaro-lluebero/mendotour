@@ -3,27 +3,23 @@ routes_main = Blueprint('routes_main', __name__)
 @routes_main.route('/map')
 def map_view():
     return render_template('map.html')
-@routes_main.route('/chart')
-def chart_view():
-    return render_template('chart.html')
-@routes_main.route('/procesar_voz', methods=['GET', 'POST'])
-def procesar_voz():
-    if request.method == 'POST':
-        # Recibir JSON desde fetch
-        data = request.get_json()
-        texto = data.get('texto') if data else ""
-        
-        print("Texto recibido:", texto)
-        
-        respuesta = {"mensaje": f"Texto recibido: {texto}"}
-        return jsonify(respuesta)
-    
-    return render_template('speech.html')
 
 #Routas rutas
 @routes_main.route('/rutas')
 def rutas():
-    return render_template('tour/rutas/rutas.html', title="Rutas turísticas")
+    return render_template("tour/rutas/rutas.html", title="Rutas turísticas")
+
+@routes_main.route('/ruta-centro')
+def ruta_centro():
+    return render_template("tour/rutas/ruta_centro.html", title="Ruta Arístides Mendoza")
+
+@routes_main.route('/ruta-bodegas')
+def ruta_bodegas():
+    return render_template("tour/rutas/ruta_bodegas.html", title="Ruta Bodegas y Viñedos")
+
+@routes_main.route('/ruta-parque')
+def ruta_parque():
+    return render_template("tour/rutas/ruta_parque.html", title="Ruta Parque General San Martín")
 
 #Routas restaurantes
 @routes_main.route('/restaurantes')

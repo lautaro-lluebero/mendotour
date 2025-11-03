@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+{% block title %}Rutas turísticas · MendoTour{% endblock %}
+
+{% block head_extra %}
+<link rel="stylesheet" href="{{ url_for('static', filename='rutas.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<h1 class="page-title">Selecciona una ruta turística</h1>
+
+<div class="rutas-container">
+
+  <!-- TARJETA 1: BODEGAS MAIPÚ -->
+  <a href="{{ url_for('routes_main.ruta_bodegas') }}" class="ruta-tarjeta">
+    <!-- Asegurate que el archivo exista exactamente en static/img/rutas/bodegass.jpeg -->
+    <img
+      src="{{ url_for('static', filename='img/rutas/bodegass.jpeg') }}"
+      alt="Ruta de bodegas en Maipú"
+      class="ruta-imagen"
+      loading="lazy">
+    <div class="ruta-contenido">
+      <h2>Bodegas Maipú</h2>
+      <p>Recorrido por bodegas desde la última estación del tranvía. Experiencia de vino y gastronomía.</p>
+    </div>
+  </a>
+
+  <!-- TARJETA 2: ARÍSTIDES MENDOZA -->
+<a href="{{ url_for('routes_main.ruta_centro') }}" class="ruta-tarjeta">
+  <img
+    src="{{ url_for('static', filename='img/rutas/Aristides.jpeg') }}"
+    alt="Calle Arístides Villanueva"
+    class="ruta-imagen"
+    loading="lazy">
+  <div class="ruta-contenido">
+    <h2>Arístides Mendoza</h2>
+    <p>Vida nocturna, gastronomía y energía juvenil. La calle que nunca duerme en Mendoza.</p>
+  </div>
+</a>
+
+
+ <!-- TARJETA 3: PARQUE GENERAL SAN MARTÍN -->
+<a href="{{ url_for('routes_main.ruta_parque') }}" class="ruta-tarjeta">
+  <img
+    src="{{ url_for('static', filename='img/rutas/portones.jpeg') }}"
+    alt="Portones del Parque General San Martín"
+    class="ruta-imagen"
+    loading="lazy">
+  <div class="ruta-contenido">
+    <h2>Parque General San Martín</h2>
+    <p>El pulmón verde de Mendoza. Lago, cerro, rosedal y naturaleza.</p>
+  </div>
+</a>
+
+
+</div>
+
+{% endblock %}

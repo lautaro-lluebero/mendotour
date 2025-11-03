@@ -7,13 +7,19 @@
   
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
   <link rel="icon" href="{{ url_for('static', filename='img/inicio/logo.png') }}" type="image/png">
+
+  <!-- CSS general -->
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   {% block head_extra %}{% endblock %}
 </head>
+
 <body>
+
   <!-- NAVBAR -->
   <header class="navbar">
+
     <a class="brand" href="{{ url_for('home') }}">
       <img src="{{ url_for('static', filename='img/inicio/logo.png') }}" alt="MendoTour" class="brand-logo">
     </a>
@@ -21,11 +27,15 @@
     <button class="nav-toggle" aria-label="Abrir menú" aria-controls="primary-menu" aria-expanded="false">☰</button>
 
     <nav id="primary-menu" class="menu">
-      <a href="{{ url_for('home') }}" class="{{ 'active' if request.endpoint=='home' else '' }}">Inicio</a>
+      
+      <a href="{{ url_for('home') }}" class="{{ 'active' if request.endpoint=='home' else '' }}">
+        Inicio
+      </a>
 
-      <!-- Submenú SIN JS -->
+      <!-- Submenú -->
       <details class="nav-dropdown" role="list">
         <summary class="menu-summary">Oferta Turística</summary>
+
         <div class="submenu-bar">
           <div class="submenu-inner">
             <a href="{{ url_for('routes_main.rutas') }}">Rutas turísticas</a>
@@ -39,43 +49,51 @@
         </div>
       </details>
 
-      <a href="{{ url_for('routes_main.sobre') }}" class="{{ 'active' if request.endpoint=='routes_main.sobre' else '' }}">Sobre Nosotros</a>
+      <a href="{{ url_for('routes_main.sobre') }}" class="{{ 'active' if request.endpoint=='routes_main.sobre' else '' }}">
+        Sobre Nosotros
+      </a>
+
     </nav>
 
     <!-- PANEL DE USUARIO -->
-<div class="user-panel">
-  {% if session.get('logged_in') %}
-    <details class="user-dropdown">
-      <summary class="ud-summary">
-        <span class="ud-name">{{ session.get('username') }}</span>
-        <span class="ud-role">({{ (session.get('rol') or 'cliente') | lower }})</span>
-        <span class="ud-caret" aria-hidden="true">▾</span>
-      </summary>
+    <div class="user-panel">
 
-      <div class="ud-menu" role="menu">
-        <a class="ud-item" role="menuitem" href="{{ url_for('routes_users.get_users') }}">Panel</a>
-        <a class="ud-item" role="menuitem" href="{{ url_for('routes_reportes.generar_reporte') }}">Generar reportes</a>
-        <a class="ud-item" role="menuitem" href="{{ url_for('routes_opiniones.index') }}">Opinar</a>
-        <hr class="ud-sep">
-        <a class="ud-item danger" role="menuitem" href="{{ url_for('routes_auth.logout') }}">Salir</a>
-      </div>
-    </details>
-  {% else %}
-    <a class="user-btn" href="{{ url_for('routes_auth.login') }}">Panel de Usuario</a>
-  {% endif %}
-</div>
+      {% if session.get('logged_in') %}
+
+        <details class="user-dropdown">
+          <summary class="ud-summary">
+            <span class="ud-name">{{ session.get('username') }}</span>
+            <span class="ud-role">({{ (session.get('rol') or 'cliente') | lower }})</span>
+            <span class="ud-caret" aria-hidden="true">▾</span>
+          </summary>
+
+          <div class="ud-menu" role="menu">
+            <a class="ud-item" href="{{ url_for('routes_users.get_users') }}">Panel</a>
+            <a class="ud-item" href="{{ url_for('routes_reportes.generar_reporte') }}">Generar reportes</a>
+            <a class="ud-item" href="{{ url_for('routes_opiniones.index') }}">Opinar</a>
+            <hr class="ud-sep">
+            <a class="ud-item danger" href="{{ url_for('routes_auth.logout') }}">Salir</a>
+          </div>
+        </details>
+
+      {% else %}
+        <a class="user-btn" href="{{ url_for('routes_auth.login') }}">Panel de Usuario</a>
+      {% endif %}
+
+    </div>
 
   </header>
 
   <!-- CONTENIDO -->
   <main class="container">
+
     {% with messages = get_flashed_messages(with_categories=true) %}
       {% if messages %}
-        <div class="flash-stack" role="status" aria-live="polite">
-          {% for category, msg in messages %}
-            <div class="flash {{ category }}">{{ msg }}</div>
-          {% endfor %}
-        </div>
+      <div class="flash-stack" role="status" aria-live="polite">
+        {% for category, msg in messages %}
+          <div class="flash {{ category }}">{{ msg }}</div>
+        {% endfor %}
+      </div>
       {% endif %}
     {% endwith %}
 
@@ -89,3 +107,6 @@
       <p>© 2025 MendoTour</p>
     </div>
   </footer>
+
+</body>
+</html>

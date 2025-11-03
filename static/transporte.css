@@ -1,0 +1,63 @@
+.transport-section {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  margin: 4rem auto;
+  max-width: 1200px;
+}
+
+/* TARJETA */
+.transport-card {
+  background-color: #f5c16c;
+  border-radius: 18px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.20);
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+/* IMÁGENES (no aplica al mapa) */
+.transport-card img:not(.route-map) {
+  width: 380px;
+  height: 230px;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+/* TEXTO */
+.transport-info { flex: 1; }
+.transport-info h2 {
+  color: #623800;
+  font-size: 2.3rem;
+  margin-bottom: 1rem;
+}
+.transport-info p, .transport-info ul {
+  font-size: 1.3rem;
+  line-height: 1.6;
+  color: #3b2a00;
+}
+
+/* MAPA DEL TRANVÍA — NO RECORTAR */
+.route-map {
+  margin-top: 1.2rem;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 10px;
+  display: block;
+}
+
+/* CONTENEDOR DEL MAPA */
+#map {
+  height: 450px;
+  border-radius: 12px;
+  margin-top: 1rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,.15);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .transport-card { flex-direction: column; text-align: center; }
+  .transport-card img:not(.route-map) { width: 100%; height: auto; }
+}

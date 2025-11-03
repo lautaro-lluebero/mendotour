@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+{% block title %}Ruta Parque General San Martín · MendoTour{% endblock %}
+
+{% block head_extra %}
+<!-- Leaflet -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='ruta_parque.css') }}">
+
+{% endblock %}
+
+{% block content %}
+
+<div class="dp-back">
+  <a class="btn" href="{{ url_for('routes_main.rutas') }}">← Volver</a>
+</div>
+
+<h1 class="page-title">Ruta Parque General San Martín</h1>
+
+<p class="descripcion">
+  Este recorrido comienza en la parada <strong>Belgrano</strong> del Metrotranvía.
+  Caminando unas cuadras llegás a los <strong>Portones del Parque</strong>, ingreso principal del Parque General San Martín.
+  Siguiendo el camino junto al lago se llega a la emblemática
+  <strong>Fuente de los Continentes</strong>.
+</p>
+
+<div id="map"></div>
+
+<script>
+
+  const map = L.map("map").setView([-32.8889, -68.8615], 15);
+
+  // Mapa base
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: "&copy; OpenStreetMap"
+  }).addTo(map);
+
+
+  // ======== RECORRIDO (LÍNEA CELESTE) ========
+  const recorrido = [
+    [-32.890367438963075, -68.85014837166521],
+    [-32.89034942940856, -68.85033615124426],
+    [-32.88873305698313, -68.84990157564704],
+    [-32.88666371845843, -68.86115634991836],
+    [-32.886758272511884, -68.8613226689741],
+    [-32.88660518494623, -68.86199867545866],
+    [-32.88652413848087, -68.86272833325152],
+    [-32.886618692683236, -68.86288928717643],
+    [-32.886857329031066, -68.86294830361557],
+    [-32.88779836044053, -68.86324875094203],
+    [-32.88774433019944, -68.86340433973609],
+    [-32.88805950614149, -68.86372088245507],
+    [-32.8884287108192, -68.86418764883729],
+    [-32.88877089914681, -68.86492803689181],
+    [-32.88896000265566, -68.8658025532171],
+    [-32.888955500195856, -68.86615128672102],
+    [-32.88884744109188, -68.86636052682339]
+  ];
+
+  const ruta = L.polyline(recorrido, {
+    color: "#00c8ff",   // CELESTE
+    weight: 6
+  }).addTo(map);
+
+  map.fitBounds(ruta.getBounds());
+
+
+  // ======== MARCADORES ========
+
+  // Parada del Metrotranvía Belgrano (inicio)
+  L.marker([-32.89037715449838, -68.85015907911729])
+    .addTo(map)
+    .bindPopup("<b>Parada Metrotranvía - Belgrano</b><br>Inicio del recorrido.");
+
+  // Portones del Parque (nuevo marcador que pasaste)
+  L.marker([-32.88662393259478, -68.86126312933966])
+    .addTo(map)
+    .bindPopup("<b>Portones del Parque General San Martín</b><br>Entrada principal del parque.");
+
+  // Fuente de los Continentes (destino final)
+  L.marker([-32.88884744109188, -68.86636052682339])
+    .addTo(map)
+    .bindPopup("<b>Fuente de los Continentes</b><br>Destino del recorrido.");
+
+</script>
+
+{% endblock %}

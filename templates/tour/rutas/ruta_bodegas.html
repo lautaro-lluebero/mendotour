@@ -1,0 +1,101 @@
+{% extends "layout.html" %}
+{% block title %}Ruta Bodegas Maipú · MendoTour{% endblock %}
+
+{% block head_extra %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='ruta_bodegas.css') }}">
+
+{% endblock %}
+
+{% block content %}
+
+<div class="dp-back">
+  <a class="btn" href="{{ url_for('routes_main.rutas') }}">← Volver</a>
+</div>
+
+<h1 class="page-title">Ruta de bodegas en Maipú</h1>
+
+<p class="descripcion">
+  Esta ruta comienza en <strong>Wine & Ride</strong>, ubicado en la última estación del Metrotranvía (Estación Gutiérrez).
+  Desde allí se puede recorrer Maipú visitando bodegas de distintos estilos: centenarias, boutique y familiares.
+</p>
+
+<h2 style="text-align:center; margin-top:35px;">Bodegas del recorrido</h2>
+
+<ul class="lista-bodegas">
+  <li><strong>1. Bodega López</strong></li>
+  <li><strong>2. Bodega y Viñedos Stocco de Viani</strong></li>
+  <li><strong>3. Bodega Florio Mendoza</strong></li>
+  <li><strong>4. Las Guapas Bodega y Restaurante</strong></li>
+  <li><strong>5. Bodega Esencia 1870</strong></li>
+  <li><strong>6. Viña El Cerno</strong></li>
+</ul>
+
+<div id="map"></div>
+
+<script>
+  const map = L.map('map').setView([-32.9602, -68.7837], 13);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap'
+  }).addTo(map);
+
+  // Recorrido (línea azul)
+  const recorrido = [
+    [-32.96024794764106, -68.78372669219972],
+    [-32.96265462797278, -68.78441870212556],
+    [-33.03007769791963, -68.80372524261476],
+    [-33.03018558445378, -68.79733085632326],
+    [-33.02615773093618, -68.79428386688234],
+    [-33.0312262727697, -68.77692997455598],
+    [-33.03792288276079, -68.75314950942995],
+    [-33.0349330282377, -68.76354575157167],
+    [-33.02826316989068, -68.76010006544215],
+    [-33.01625934030006, -68.75907180029911],
+    [-33.00089534745715, -68.75777331344267],
+    [-33.00226748122164, -68.75007483615528],
+    [-33.000859336441195, -68.75778923726236],
+    [-32.99867040892453, -68.76999643753463],
+    [-32.96970054340894, -68.77234265445516],
+    [-32.9695835861714, -68.77253582247248],
+    [-32.96908876537591, -68.77256801714205],
+    [-32.96757039138996, -68.7794404759461],
+    [-32.96354437656622, -68.77978840955086],
+    [-32.96294155329258, -68.7828469031587],
+    [-32.96057520724929, -68.78224593599364],
+    [-32.95999935679971, -68.78361957522804],
+    [-32.96025129183316, -68.78372689079323]
+  ];
+
+  const ruta = L.polyline(recorrido, { color: "blue", weight: 5 }).addTo(map);
+  map.fitBounds(ruta.getBounds());
+
+
+  // Marcador de Wine & Ride (punto de partida) — Ícono verde
+  const wineRide = L.icon({
+    iconUrl: "https://cdn-icons-png.flaticon.com/512/684/684908.png",
+    iconSize: [38, 38]
+  });
+
+  L.marker([-32.96024072188235, -68.78373684580608], { icon: wineRide })
+    .addTo(map)
+    .bindPopup(`<b>Punto de partida:</b><br>Wine & Ride (Estación Gutiérrez)`);
+
+
+  // Bodegas
+  const bodegas = [
+    { nombre: "Bodega López", coords: [-32.96268162023527, -68.7843543291092] },
+    { nombre: "Bodega y Viñedos Stocco de Viani", coords: [-33.03036539505052, -68.79728794097902] },
+    { nombre: "Bodega Florio Mendoza", coords: [-33.0313026914157, -68.77697288990022] },
+    { nombre: "Las Guapas Bodega y Restaurante", coords: [-33.03790073620394, -68.75303149223329] },
+    { nombre: "Bodega Esencia 1870", coords: [-33.01628631617439, -68.75895911461754] },
+    { nombre: "Bodega Viña El Cerno", coords: [-33.00234392497055, -68.75009630009463] }
+  ];
+
+  bodegas.forEach(b => {
+    L.marker(b.coords).addTo(map).bindPopup(`<b>${b.nombre}</b>`);
+  });
+</script>
+
+{% endblock %}

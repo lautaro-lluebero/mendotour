@@ -95,7 +95,7 @@ main.container{
   letter-spacing: .2px;
 }
 
-/* -------- Ajustes responsivos menores -------- */
+/* -------- Ajustes responsivos -------- */
 @media (max-width: 900px){
   .card img{ height: 150px; }
 }
@@ -120,4 +120,3 @@ main.container{
   text-align: center;
   margin: 12px 10px 16px; 
 }
-

@@ -8,7 +8,7 @@
 <section class="auth-wrap" aria-labelledby="register-title">
   <div class="auth-card">
     <div class="auth-brand">
-      <img src="{{ url_for('static', filename='img/logo.png') }}" alt="MendoTour">
+      <img src="{{ url_for('static', filename='img/inicio/logo.png') }}" alt="MendoTour">
     </div>
 
     <h2 id="register-title" class="auth-title">Crear cuenta</h2>
@@ -39,10 +39,6 @@
     <div class="form-actions">
       <div class="form-actions-left">
         <a class="btn" href="{{ url_for('routes_auth.login') }}">Ir a Iniciar sesión</a> 
-      </div>
-
-      <div class="form-actions-right">
-        <a class="btn" href="{{ url_for('routes_users.get_users') }}">Ver usuarios</a>
       </div>
     </div>
 

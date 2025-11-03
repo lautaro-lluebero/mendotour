@@ -2,11 +2,15 @@
 {% block title %}Usuarios · MendoTour{% endblock %}
 
 {% block content %}
-<h2>Lista de Usuarios</h2>
+<header class="page-hero">
+  <h1>Panel de Usuarios</h1>
+</header>
 
-<div class="users-actions" style="margin:10px 0 14px;">
-  <a class="btn create" href="{{ url_for('routes_users.register') }}">Registrar nuevo usuario</a>
-</div>
+{% if is_admin %}
+  <div class="users-actions" style="margin:10px 0 14px;">
+    <a class="btn create" href="{{ url_for('routes_users.register') }}">Registrar nuevo usuario</a>
+  </div>
+{% endif %}
 
 <div class="table-wrap">
   <table class="table users-table">
@@ -15,30 +19,44 @@
         <th>ID</th>
         <th>Usuario</th>
         <th>Email</th>
-        <th>Rol</th>           <!-- NUEVA COLUMNA -->
+        {% if is_admin %}<th>Rol</th>{% endif %}
         <th>Contraseña</th>
         <th>Acciones</th>
       </tr>
     </thead>
+
     <tbody>
-      {% set role_map = {'admin': 'Administrador', 'user': 'Usuario', 'editor': 'Editor'} %}
       {% for user in users %}
+      {% set soy_duenio = (session.get('user_id') == user.id) %}
       <tr>
         <td>{{ user.id }}</td>
         <td>{{ user.username }}</td>
         <td>{{ user.email }}</td>
-        <td>
-  <span class="role-pill">
-    {{ (user.rol or 'cliente')|capitalize }}
-  </span>
-</td>
-        <td>••••••••</td>  {# no mostramos el valor real #}
-        <td class="actions">
-          <a class="btn edit" href="{{ url_for('routes_users.edit_user', id=user.id) }}">Editar</a>
 
-          <form action="{{ url_for('routes_users.delete_user', id=user.id) }}" method="post" style="display:inline;">
-            <button type="submit" class="btn delete" onclick="return confirm('¿Eliminar este usuario?');">Eliminar</button>
-          </form>
+        {% if is_admin %}
+          <td>
+            <span class="role-pill">
+              {{ (user.rol or 'cliente')|capitalize }}
+            </span>
+          </td>
+        {% endif %}
+
+        <td>••••••••</td>  {# no mostramos el valor real #}
+
+        <td class="actions">
+          {# Editar: admin cualquiera; no-admin solo su propio registro #}
+          {% if is_admin or soy_duenio %}
+            <a class="btn edit" href="{{ url_for('routes_users.edit_user', id=user.id) }}">Editar</a>
+          {% endif %}
+
+          {# Eliminar: solo admin #}
+          {% if is_admin %}
+            <form action="{{ url_for('routes_users.delete_user', id=user.id) }}" method="post" style="display:inline;">
+              <button type="submit" class="btn delete" onclick="return confirm('¿Eliminar a {{ user.username }}?');">
+                Eliminar
+              </button>
+            </form>
+          {% endif %}
         </td>
       </tr>
       {% endfor %}

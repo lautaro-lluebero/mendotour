@@ -1,0 +1,40 @@
+.rutas-container {
+    max-width: 1100px;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.ruta-tarjeta {
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: transform .20s ease-in-out;
+}
+
+.ruta-tarjeta:hover { transform: scale(1.03); }
+
+.ruta-imagen {
+    display: block;
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    background: #eee;
+}
+
+.ruta-contenido { padding: 18px; }
+
+.ruta-contenido h2 {
+    font-size: 1.4rem;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+}
+
+.ruta-contenido p {
+    font-size: 1rem;
+    color: #555;
+}

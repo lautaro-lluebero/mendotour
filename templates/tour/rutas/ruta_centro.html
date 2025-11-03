@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+{% block title %}Ruta Arístides Mendoza · MendoTour{% endblock %}
+
+{% block head_extra %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='ruta_centro.css') }}">
+
+{% endblock %}
+
+{% block content %}
+
+<div class="dp-back">
+  <a class="btn" href="{{ url_for('routes_main.rutas') }}">← Volver</a>
+</div>
+
+<h1 class="page-title">Ruta Calle Arístides Villanueva</h1>
+
+<p class="descripcion">
+  La Calle Arístides Villanueva es uno de los puntos más emblemáticos de la vida nocturna en Mendoza.
+  Gastronomía, movimiento y energía juvenil la convierten en el lugar ideal para caminar, cenar y disfrutar
+  del ambiente de la ciudad al caer la noche.
+</p>
+
+<div id="map"></div>
+
+<script>
+  // Inicializar mapa centrado en la zona
+  const map = L.map('map').setView([-32.8925, -68.8518], 15);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap'
+  }).addTo(map);
+
+  // Recorrido desde Parada Belgrano hacia Arístides (LÍNEA VERDE)
+  const recorrido = [
+    [-32.89036795410068, -68.85015351725362],
+    [-32.89039046603854, -68.85035739222513],
+    [-32.89297930073885, -68.8510494941022],
+    [-32.89099712551693, -68.86204660095927]
+  ];
+
+  const ruta = L.polyline(recorrido, {
+    color: "green",
+    weight: 6,
+    opacity: 0.9
+  }).addTo(map);
+
+  map.fitBounds(ruta.getBounds());
+
+  // Marcador del cartel de Aristides (punto visual importante)
+  const cartelIcon = L.icon({
+    iconUrl: "https://cdn-icons-png.flaticon.com/512/854/854878.png",
+    iconSize: [38, 38]
+  });
+
+  L.marker([-32.893078222065974, -68.85129085157114], { icon: cartelIcon })
+    .addTo(map)
+    .bindPopup("<b>Cartel de Arístides</b><br>Bienvenido a la calle que nunca duerme.");
+
+  // Marcador de PARADA BELGRANO (inicio del recorrido)
+  const metroIcon = L.icon({
+    iconUrl: "https://cdn-icons-png.flaticon.com/512/684/684908.png",
+    iconSize: [36, 36],
+  });
+
+  L.marker([-32.89037715449838, -68.85015907911729], { icon: metroIcon })
+    .addTo(map)
+    .bindPopup("<b>Punto de inicio:</b><br>Parada Belgrano (Metrotranvía)");
+
+</script>
+
+{% endblock %}

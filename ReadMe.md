@@ -1,6 +1,7 @@
 # MendoTour
-
 Este es un proyecto que consiste en un sitio web turístico orientado a la promoción y difusión de los atractivos de la provincia de Mendoza, Argentina. Logrando brindar a turistas nacionales e internacionales una plataforma digital accesible, intuitiva y completa, donde puedan conocer y planificar su visita a Mendoza. Usando Python, Flask, SQLAlchemy y MySQL.
+
+Integrantes del proyecto: Francisco Iglesias, Lautaro Lluebero, Máximo Mercau y Santino Barrionuevo.
 
 ## Requisitos
 
