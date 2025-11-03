@@ -17,7 +17,7 @@ def is_valid_email(email: str) -> bool:
 def not_empty(*vals) -> bool:
     return all(v and str(v).strip() for v in vals)
 
-# Opcional: lista blanca de roles aceptados
+# Lista blanca de roles aceptados
 ALLOWED_ROLES = {"admin", "administrador", "user", "cliente", "editor"}
 
 def normalize_role(rol: str) -> str:
