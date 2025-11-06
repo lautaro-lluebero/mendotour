@@ -4,7 +4,6 @@
 {% block head_extra %}
 <link rel="stylesheet" href="{{ url_for('static', filename='transporte.css') }}">
 
-<!-- Leaflet (lo incluyo acá para que no falte; si ya está en layout.html, no pasa nada) -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 {% endblock %}
@@ -40,7 +39,6 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 19
 }).addTo(map);
 
-// Recorrido REAL marcado por vos con Leaflet
 const recorridoTranvia = [
   [-32.83602148469606, -68.83591674669381],
   [-32.839757832447155, -68.83683932822852],
@@ -77,7 +75,6 @@ const ruta = L.polyline(recorridoTranvia, {
   opacity: 0.9
 }).addTo(map);
 
-// Acercar el mapa a la línea automáticamente
 map.fitBounds(ruta.getBounds());
 
 </script>

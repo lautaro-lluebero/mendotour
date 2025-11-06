@@ -13,8 +13,10 @@
     font-size: 1.25rem;
     line-height: 1.7rem;
 }
+
 /* Botón volver */
 .dp-back{ margin-bottom: 20px; }
+
 .btn{
     display:inline-block;
     background:#fff; color:#3d2500;

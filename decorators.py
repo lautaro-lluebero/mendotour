@@ -13,7 +13,6 @@ def login_required(view):
         if is_logged:
             return view(*args, **kwargs)
         flash('Necesitás iniciar sesión para continuar.', 'warning')
-        # Preservar destino para volver post-login
         next_url = request.full_path if request.query_string else request.path
         return redirect(url_for('routes_auth.login', next=next_url))
     return wrapped
@@ -24,7 +23,6 @@ def admin_required(view):
         if _is_admin():
             return view(*args, **kwargs)
         flash('No tenés permisos de administrador para realizar esta acción.', 'danger')
-        # Redirigir a una ruta pública para evitar bucles
         return redirect(url_for('home'))
     return wrapped
 

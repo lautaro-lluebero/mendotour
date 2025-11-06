@@ -8,7 +8,7 @@ from decorators import login_required, admin_required, owner_or_admin
 
 routes_users = Blueprint('routes_users', __name__, url_prefix='/users')
 
-# ---------- Helpers de validación ----------
+# Helpers de validación
 EMAIL_RE = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
 
 def is_valid_email(email: str) -> bool:
@@ -26,10 +26,10 @@ def normalize_role(rol: str) -> str:
         return "cliente"
     return rol.strip().lower()
 
-# ---------- CRUD ----------
+# CRUD 
 
-# LISTAR (Panel)
-# Admin ve todos; no-admin ve solo su propio registro
+# LISTAR 
+# El Admin ve todos, no-admin ve solo su propio registro
 @routes_users.route('/', methods=['GET'])
 @login_required
 def get_users():
@@ -45,7 +45,7 @@ def get_users():
 @routes_users.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
-        # 1) Tomar datos del form
+        # Tomar datos del form
         username = request.form.get('username', '').strip()
         email    = request.form.get('email', '').strip()
         password = request.form.get('password', '')
@@ -79,7 +79,7 @@ def register():
 
     return render_template('users/register.html')
 
-# EDITAR (form) — dueño o admin
+# EDITAR (form)
 @routes_users.route('/update/<int:id>', methods=['GET'])
 @login_required
 @owner_or_admin
@@ -90,7 +90,7 @@ def edit_user(id):
         return redirect(url_for('home'))
     return render_template('users/edit_user.html', user=user)
 
-# EDITAR (guardar) — dueño o admin
+# EDITAR (guardar) 
 @routes_users.route('/update/<int:id>', methods=['POST'])
 @login_required
 @owner_or_admin
@@ -102,16 +102,16 @@ def update_user(id):
 
     username = request.form.get('username', '').strip()
     email    = request.form.get('email', '').strip()
-    password = request.form.get('password', '')  # puede venir vacío
+    password = request.form.get('password', '')  
     rol_form = normalize_role(request.form.get('rol', user.rol))
 
-    # Validaciones básicas (NO exigimos password al editar)
+    # Validaciones básicas
     if not not_empty(username, email):
         return render_template('users/edit_user.html', user=user, error="Nombre de usuario y email son obligatorios")
     if not is_valid_email(email):
         return render_template('users/edit_user.html', user=user, error="Email inválido")
 
-    # Evitar duplicados en OTRO usuario
+    # Evitar duplicados en otro usuario
     other = Users.query.filter(
         or_(Users.email == email, Users.username == username),
         Users.id != id
@@ -119,25 +119,24 @@ def update_user(id):
     if other:
         return render_template('users/edit_user.html', user=user, error="Usuario o email ya está en uso")
 
-    # Si NO es admin, no puede cambiar el rol
+    # Si no es admin, no puede cambiar el rol
     es_admin = (session.get('rol') or '').lower() in {'admin', 'administrador'}
     if es_admin:
         if rol_form not in ALLOWED_ROLES:
             return render_template('users/edit_user.html', user=user, error=f"Rol inválido: {rol_form}")
         user.rol = rol_form
-    # si no es admin, el rol queda como estaba
 
     # Guardar cambios
     user.username = username
     user.email    = email
 
-    # Hashear solo si ingresaron una nueva contraseña
+    # Se hashea solo si ingresaron una nueva contraseña
     if (password or '').strip():
         user.set_password(password)
 
     db.session.commit()
 
-    # Si edité al usuario actualmente logueado, refresco la sesión
+    # Si se edita al usuario actualmente logueado, se refresca la sesión
     if session.get('user_id') == user.id:
         session['username'] = user.username
         session['rol'] = user.rol
@@ -145,7 +144,7 @@ def update_user(id):
     flash("Usuario actualizado", "success")
     return redirect(url_for('routes_users.get_users'))
 
-# ELIMINAR (POST) — solo admin
+# ELIMINAR (POST) 
 @routes_users.route('/delete/<int:id>', methods=['POST'])
 @login_required
 @admin_required
@@ -158,7 +157,7 @@ def delete_user(id):
     db.session.delete(user)
     db.session.commit()
 
-    # Si borré al usuario logueado, lo deslogueo “de hecho”
+    # Si se borro al usuario logueado, se deslogueo
     if session.get('user_id') == id:
         session.clear()
 

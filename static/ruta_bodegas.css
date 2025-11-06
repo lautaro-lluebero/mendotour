@@ -5,6 +5,7 @@
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,.25);
 }
+
 .descripcion {
     max-width: 900px;
     margin: 25px auto;
@@ -12,17 +13,21 @@
     font-size: 1.2rem;
     line-height: 1.7rem;
 }
+
 .lista-bodegas {
     max-width: 700px;
     margin: 0 auto 20px;
     font-size: 1.15rem;
     line-height: 1.6rem;
 }
+
 .lista-bodegas li {
     margin-bottom: 6px;
  }
+
 /* Botón volver */
 .dp-back{ margin-bottom: 20px; }
+
 .btn{
     display:inline-block;
     background:#fff; color:#3d2500;

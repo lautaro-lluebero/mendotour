@@ -124,7 +124,6 @@
   background: #ffe9b5;
 }
 
-
 @media (max-width: 1200px){
   .team-grid{ grid-template-columns: repeat(3, 1fr); }
 }
@@ -146,11 +145,9 @@
   box-shadow: 0 6px 18px rgba(0,0,0,.06);
 }
 
-/* Limita el ancho de la card para no “estire” la foto */
 .member{ max-width: 280px; margin-inline: auto; }
 
-/* Responsive: un poco más chica en mobile */
+/* Responsive */
 @media (max-width: 600px){
   .avatar-img{ width: 92px; height: 92px; }
 }
-

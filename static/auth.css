@@ -7,7 +7,7 @@
   --white:#fff;
 }
 
-/* Centrado del bloque (sin ocupar todo el alto) */
+/* Centrado del bloque */
 .auth-wrap{
   display: grid;
   place-items: center;
@@ -15,7 +15,7 @@
   padding: 28px 16px 40px;
 }
 
-/* Tarjeta más ANCHA y con buen padding */
+/* Tarjetas */
 .auth-card{
   width: clamp(480px, 40vw, 600px);    /* 520px - 680px según pantalla */
   background: linear-gradient(180deg, #fde7c4 0%, #f7d29a 100%);
@@ -50,7 +50,7 @@
   background: #fdecea; border: 1px solid #f5c2c0; color: #b23b32;
 }
 
-/* Formulario cómodo y ancho */
+/* Formulario */
 .auth-form{
   display: grid;
   gap: 14px;
@@ -60,7 +60,7 @@
   font-size: 1rem;
 }
 .auth-form input{
-  height: 48px;                      /* más alto */
+  height: 48px;                      
   border: 2px solid rgba(0,0,0,.10);
   background: #fffdf7;
   padding: 12px 14px;
@@ -75,7 +75,7 @@
   background: #ffffff;
 }
 
-/* Botón vistoso y grande */
+/* Botón */
 .auth-btn{
   margin-top: 6px;
   height: 48px;
@@ -132,7 +132,6 @@
   gap: 8px;
 }
 
-/* Responsive */
 @media (max-width: 520px){
   .form-actions{
     flex-direction: column;

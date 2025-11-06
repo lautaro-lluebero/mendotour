@@ -12,13 +12,11 @@ def is_admin():
 
 @routes_reportes.route('/', methods=['GET', 'POST'])
 def generar_reporte():
-    # Debe estar logueado para entrar aquí
     if not is_logged_in():
         flash("Tenés que iniciar sesión para generar un reporte", "warning")
         return redirect(url_for('routes_auth.login'))
 
     if request.method == 'POST':
-        # Cualquiera logueado puede generar
         user_id = session.get('user_id')
         tipo = (request.form.get('tipo') or 'Reporte general').strip()
 
@@ -34,5 +32,5 @@ def generar_reporte():
 
     return render_template(
         'reportes.html',
-        historial=historial,   # tu template espera este nombre
+        historial=historial,   
     )

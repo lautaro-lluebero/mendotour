@@ -5,6 +5,7 @@
     margin-top: 25px;
     box-shadow: 0 5px 18px rgba(0, 0, 0, 0.25);
 }
+
 .descripcion {
     max-width: 850px;
     margin: 15px auto;
@@ -12,8 +13,10 @@
     font-size: 1.25rem;
     line-height: 1.7rem;
 }
+
 /* Botón volver */
 .dp-back{ margin-bottom: 20px; }
+
 .btn{
     display:inline-block;
     background:#fff; color:#3d2500;

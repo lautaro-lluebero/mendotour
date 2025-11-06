@@ -24,7 +24,7 @@ body{
 }
 main.container{ flex: 1; }
 
-/* ===== Navbar ===== */
+/* Navbar */
 .navbar{
   position: sticky;
   top: 0;
@@ -53,7 +53,6 @@ main.container{ flex: 1; }
 }
 .menu a:hover{ background: #ffe0a3; }
 .menu a.active{ background: var(--accent); }
-
 
 .nav-toggle{
   display: none;
@@ -103,7 +102,7 @@ main.container{ flex: 1; }
 .site-footer{ margin-top: 24px; background: rgba(0,0,0,.06); }
 .site-footer .container{ padding: 16px 20px; text-align: center; color: var(--muted); }
 
-/* ===== Submenú (details/summary) — barra full-width bajo la navbar ===== */
+/* Submenú */
 .nav-dropdown{ display:inline-block; position:static; }
 .menu-summary{
   list-style:none; display:inline-block; background:transparent; border:0;
@@ -123,7 +122,6 @@ main.container{ flex: 1; }
 }
 .nav-dropdown[open] > .submenu-bar{ display:block; transform:translateY(0); opacity:1; }
 
-/* Contenido centrado del submenú */
 .submenu-inner{
   max-width:1200px; margin:0 auto; padding:10px 20px;
   display:flex; flex-wrap:wrap; justify-content:center; gap:20px 28px;
@@ -136,20 +134,19 @@ main.container{ flex: 1; }
 .submenu-inner a:hover{ text-decoration:underline; }
 .submenu-inner a:focus-visible{ outline:2px solid rgba(0,0,0,.35); outline-offset:2px; }
 
-/* Forzar una sola fila en desktop ancho */
 @media (min-width: 1100px){
   .submenu-inner{ flex-wrap: nowrap; }
   .submenu-inner a{ font-size: .95rem; padding: 6px 10px; }
 }
 
-/* ===== Responsive ===== */
+/* Responsive */
 @media (max-width: 768px){
   :root{ --nav-h: 60px; }
 
   .nav-toggle{ display: block; }
 
-
   .menu, .user-panel{ display: none; }
+
   .menu.open, .user-panel.open{ display: block; }
 
   .menu.open{
@@ -210,7 +207,6 @@ main.container{ flex: 1; }
 .btn.edit{ background:#ffd48a; }
 .btn.delete{ background:#ffb089; }
 
-
 .table-wrap{ overflow-x:auto; }
 .table{
   width:100%;
@@ -235,10 +231,8 @@ main.container{ flex: 1; }
 .table .actions{ white-space: nowrap; }
 .users-actions{ margin: 10px 0 14px; }
 
-
 .table .actions form{ display:inline; }
 .table .actions button.btn{ cursor:pointer; }
-
 
 .form-card{
   background: rgba(255,255,255,.35);
@@ -294,27 +288,109 @@ main.container{ flex: 1; }
   font-weight:700;
   line-height:1;
 }
-.cta-opinion{ text-align:center; margin:24px 0 8px; }
-.opinion-hint{ margin-top:6px; color:var(--muted); font-size:.9rem; }
+.cta-opinion{ 
+  text-align:center; 
+  margin:24px 0 8px; }
+.opinion-hint{ 
+  margin-top:6px; 
+  color:var(--muted); 
+  font-size:.9rem; }
+
 .opiniones-page{ padding-top:8px; }
-.opiniones-list{ display:grid; gap:18px; margin-bottom:18px; }
-.op-card{ display:grid; grid-template-columns:54px 1fr; gap:12px; }
-.op-avatar{ width:46px;height:46px;border-radius:999px;background:#fff;display:grid;place-items:center;border:2px solid rgba(0,0,0,.2);font-size:22px;color:var(--text); }
-.op-bubble{ position:relative;background:#fff;border-radius:14px;padding:12px 14px;border:2px solid rgba(0,0,0,.08);box-shadow:0 4px 14px rgba(0,0,0,.10); }
-.op-bubble::before{ content:"";position:absolute;left:-14px;top:18px;width:0;height:0;border-top:12px solid transparent;border-bottom:12px solid transparent;border-right:14px solid #fff;filter:drop-shadow(-2px 0 1px rgba(0,0,0,.08)); }
-.op-header{ display:flex;align-items:baseline;gap:10px;margin-bottom:4px; }
+.opiniones-list{ 
+  display:grid; 
+  gap:18px; 
+  margin-bottom:18px; }
+
+.op-card{ 
+  display:grid; 
+  grid-template-columns:54px 1fr; 
+  gap:12px; }
+
+.op-avatar{ 
+  width:46px;
+  height:46px;
+  border-radius:999px;
+  background:#fff;
+  display:grid;
+  place-items:center;
+  border:2px solid rgba(0,0,0,.2);
+  font-size:22px;
+  color:var(--text); }
+
+.op-bubble{ 
+  position:relative;
+  background:#fff;
+  border-radius:14px;
+  padding:12px 14px;
+  border:2px solid rgba(0,0,0,.08);
+  box-shadow:0 4px 14px rgba(0,0,0,.10); 
+}
+
+.op-bubble::before{ 
+  content:"";
+  position:absolute;
+  left:-14px;
+  top:18px;
+  width:0;
+  height:0;
+  border-top:12px solid transparent;
+  border-bottom:12px solid transparent;
+  border-right:14px solid #fff;
+  filter:drop-shadow(-2px 0 1px rgba(0,0,0,.08)); 
+}
+
+.op-header{ 
+  display:flex;
+  align-items:baseline;
+  gap:10px;
+  margin-bottom:4px; 
+}
+
 .op-user{ font-weight:800;color:var(--text); }
 .op-time{ color:var(--muted);font-size:.85rem; }
 .op-text{ margin:0; }
 .op-empty{ color:var(--muted);text-align:center; }
 .op-input-wrap{ position:sticky;bottom:12px; }
-.op-form{ display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:10px;border:3px solid rgba(0,0,0,.08);border-radius:14px;background:#fff;box-shadow:0 10px 28px rgba(0,0,0,.15); }
-.op-form textarea{ width:100%;resize:vertical;min-height:56px;border:0;outline:none;font:inherit;color:var(--text); }
-.op-send{ width:44px;height:44px;border-radius:999px;border:0;cursor:pointer;font-size:20px;background:var(--accent);color:var(--text);box-shadow:0 6px 16px rgba(0,0,0,.18); }
+
+.op-form{ display:grid;
+  grid-template-columns:1fr auto;
+  gap:10px;
+  align-items:center;
+  padding:10px;
+  border:3px solid rgba(0,0,0,.08);
+  border-radius:14px;
+  background:#fff;
+  box-shadow:0 10px 28px rgba(0,0,0,.15); 
+}
+
+.op-form textarea{ 
+  width:100%;
+  resize:vertical;
+  min-height:56px;
+  border:0;
+  outline:none;
+  font:inherit;
+  color:var(--text); 
+}
+
+.op-send{ 
+  width:44px;
+  height:44px;
+  border-radius:999px;
+  border:0;
+  cursor:pointer;
+  font-size:20px;
+  background:var(--accent);
+  color:var(--text);
+  box-shadow:0 6px 16px rgba(0,0,0,.18); 
+}
+
 .op-send:hover{ filter:brightness(1.02);transform:translateY(-1px); }
-/* ===== Opiniones — modo XL ===== */
+
+/* Opiniones */
 .opiniones-page.opiniones-xl{
-  max-width: 1280px;      /* más ancho */
+  max-width: 1280px;     
   margin: 0 auto;
   padding-top: 8px;
 }
@@ -323,7 +399,7 @@ main.container{ flex: 1; }
   gap: 28px;
 }
 
-/* Avatar y grilla más grande */
+/* Avatar */
 .opiniones-page.opiniones-xl .op-card{
   grid-template-columns: 90px 1fr;
   gap: 18px;
@@ -335,17 +411,15 @@ main.container{ flex: 1; }
   border-width: 2px;
 }
 
-/* Burbuja enorme */
 .opiniones-page.opiniones-xl .op-bubble{
   padding: 24px 28px;
-  min-height: 150px;           /* alto tipo “tarjeta grande” */
+  min-height: 150px;           
   border-radius: 22px;
   border: 2px solid rgba(0,0,0,.08);
   box-shadow: 0 12px 28px rgba(0,0,0,.16);
   transition: outline-color .15s ease, box-shadow .15s ease;
 }
 
-/* Pico acompaña el tamaño */
 .opiniones-page.opiniones-xl .op-bubble::before{
   left: -22px; top: 28px;
   border-top: 18px solid transparent;
@@ -354,20 +428,17 @@ main.container{ flex: 1; }
   filter: drop-shadow(-2px 0 1px rgba(0,0,0,.08));
 }
 
-/* “Borde violeta” al hover/focus para resaltar como tu ejemplo */
 .opiniones-page.opiniones-xl .op-bubble:hover,
 .opiniones-page.opiniones-xl .op-bubble:focus-within{
-  outline: 4px solid #7a4cff;   /* violeta */
+  outline: 4px solid #7a4cff;   
   outline-offset: -2px;
   box-shadow: 0 16px 40px rgba(0,0,0,.20);
 }
 
-/* Tipografías más grandes */
 .opiniones-page.opiniones-xl .op-user{ font-size: 1.35rem; font-weight: 900; }
 .opiniones-page.opiniones-xl .op-time{ font-size: 1.05rem; }
 .opiniones-page.opiniones-xl .op-text{ font-size: 1.2rem; line-height: 1.6; }
 
-/* Caja para opinar gigante */
 .opiniones-page.opiniones-xl .op-input-wrap{ margin-top: 10px; }
 .opiniones-page.opiniones-xl .op-form{
   padding: 16px;
@@ -384,7 +455,6 @@ main.container{ flex: 1; }
   box-shadow: 0 12px 26px rgba(0,0,0,.22);
 }
 
-/* Opcional: que la sección ocupe el ancho de la ventana (full-bleed) */
 @media (min-width: 1100px){
   .opiniones-page.opiniones-xl.full-bleed{
     margin-left: calc(50% - 50vw);
@@ -394,9 +464,8 @@ main.container{ flex: 1; }
     padding-right: clamp(18px, 4vw, 40px);
   }
 }
-/* ===== Full-bleed utility ===== */
+/* Full-bleed utility */
 .opiniones-page.full-bleed{
-  /* saca el límite de ancho del container y estira a toda la ventana */
   margin-left:  calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
   max-width: 100vw;
@@ -404,34 +473,32 @@ main.container{ flex: 1; }
   padding-right: clamp(16px, 4vw, 48px);
 }
 
-/* si usás la versión XL, mantené el estilo grande también en full-bleed */
 .opiniones-page.opiniones-xl.full-bleed{
-  /* (opcional) más aire arriba/abajo en la franja */
   padding-top: 12px;
   padding-bottom: 12px;
 }
-/* ==== Opiniones: un paso más chico ==== */
+
 .opiniones-page.opiniones-xl{
-  max-width: 1120px;          /* antes 1280 */
+  max-width: 1120px;          
 }
 
 .opiniones-page.opiniones-xl .opiniones-list{ gap: 22px; }
 
 .opiniones-page.opiniones-xl .op-card{
-  grid-template-columns: 72px 1fr;  /* antes 90px */
+  grid-template-columns: 72px 1fr;  
   gap: 14px;
 }
 
 .opiniones-page.opiniones-xl .op-avatar{
-  width: 60px; height: 60px;       /* antes 76 */
-  font-size: 26px;                  /* antes 34 */
+  width: 60px; height: 60px;       
+  font-size: 26px;                  
 }
 
 .opiniones-page.opiniones-xl .op-bubble{
-  padding: 18px 20px;               /* antes 24x28 */
-  min-height: 120px;                /* antes 150 */
-  border-radius: 18px;              /* antes 22 */
-  outline-width: 3px;               /* violeta más finito al hover */
+  padding: 18px 20px;              
+  min-height: 120px;               
+  border-radius: 18px;              
+  outline-width: 3px;               
 }
 
 .opiniones-page.opiniones-xl .op-bubble::before{
@@ -450,15 +517,15 @@ main.container{ flex: 1; }
   border-radius: 16px;
 }
 .opiniones-page.opiniones-xl .op-form textarea{
-  min-height: 100px;                /* antes 140 */
+  min-height: 100px;                
   font-size: 1.05rem;
 }
 .opiniones-page.opiniones-xl .op-send{
-  width: 52px; height: 52px;        /* antes 64 */
+  width: 52px; height: 52px;        
   font-size: 20px;
   box-shadow: 0 10px 22px rgba(0,0,0,.2);
 }
-/* ===== User dropdown ===== */
+/* User dropdown */
 .user-dropdown{ position: relative; display:inline-block; }
 .ud-summary{
   list-style: none;
@@ -493,7 +560,7 @@ main.container{ flex: 1; }
 .ud-item.danger{ background:#fff7f3; border:2px solid #ffb089; }
 .ud-item.danger:hover{ background:#ffd2bf; }
 
-/* Dropdown dentro del menú móvil (cuando .user-panel recibe .open) */
+/* Dropdown dentro del menú móvil */
 @media (max-width: 768px){
   .user-panel.open .user-dropdown{ display:block; }
   .user-panel.open .ud-menu{
@@ -502,18 +569,17 @@ main.container{ flex: 1; }
   }
 }
 
-/* Alinear el menú a la izquierda y empujar el panel de usuario a la derecha */
 .navbar{
-  justify-content: flex-start;        /* en vez de space-between */
+  justify-content: flex-start;       
 }
 
 .menu{
   display: flex;
   align-items: center;
-  margin-left: 16px;                  /* separa del logo */
-  margin-right: auto;                 /* empuja lo que sigue (user-panel) hacia la derecha */
+  margin-left: 16px;                 
+  margin-right: auto;                 
 }
 
 .user-panel{
-  margin-left: auto;                  /* queda pegado a la derecha */
+  margin-left: auto;                 
 }

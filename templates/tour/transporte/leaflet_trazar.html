@@ -4,7 +4,6 @@
 <meta charset="utf-8">
 <title>Trazar recorrido tranvía</title>
 
-<!-- Leaflet sin descargar nada -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
@@ -13,7 +12,6 @@
     height: 80vh;
   }
 
-  /* área para ver coordenadas: más grande + cómodo */
   #coords-container {
     width: 95%;
     margin: 15px auto;
@@ -21,13 +19,13 @@
 
   #coords {
     width: 100%;
-    height: 300px;        /* antes era 160px */
+    height: 300px;        
     border-radius: 8px;
     padding: 12px;
     font-size: 15px;
-    resize: vertical;     /* permite agrandar más manualmente */
+    resize: vertical;     
     font-family: monospace;
-    white-space: pre;     /* mantiene formato con saltos de línea */
+    white-space: pre;     
   }
 
   h2 {
@@ -56,17 +54,14 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; OpenStreetMap'
 }).addTo(map);
 
-// Guarda coordenadas de cada clic
 let puntos = [];
 let polyline = L.polyline([], { color: "red", weight: 6 }).addTo(map);
 
-// CADA CLICK AGREGA UN PUNTO
 map.on("click", function(e) {
   const punto = [e.latlng.lat, e.latlng.lng];
   puntos.push(punto);
   polyline.setLatLngs(puntos);
 
-  // Formato con saltos de línea para leer mejor
   let textoFormateado = "[\n";
   puntos.forEach(p => {
     textoFormateado += `  [${p[0]}, ${p[1]}],\n`;

@@ -7,17 +7,16 @@ class Users(db.Model):
     id       = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80),  unique=True, nullable=False)
     email    = db.Column(db.String(120), unique=True, nullable=False)
-    # Guarda el HASH (subí a 255 por las variantes de werkzeug)
     password = db.Column(db.String(255), nullable=False)
     rol      = db.Column(db.String(20),  nullable=False, default="cliente")
 
     def __init__(self, username, email, password, rol="cliente"):
         self.username = username
         self.email    = email
-        self.set_password(password)     #SIEMPRE hash
+        self.set_password(password)   
         self.rol      = rol
 
-    # ===== Helpers de password =====
+    # Helpers de password 
     def set_password(self, raw: str) -> None:
         """Hashea y guarda la contraseña."""
         self.password = generate_password_hash(raw)
@@ -30,7 +29,7 @@ class Users(db.Model):
         """Detecta si lo almacenado parece un hash de werkzeug."""
         return isinstance(self.password, str) and self.password.startswith("pbkdf2:")
 
-    # ===== Serialización segura (NO exponemos el hash) =====
+    # Serialización segura (No se expone el hash)
     def serialize(self):
         return {
             "id": self.id,

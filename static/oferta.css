@@ -1,4 +1,3 @@
-/* Paleta */
 :root{
   --bg:#f8b047;           /* fondo general */
   --panel:#f3cf97;        /* panel / tarjetas */
@@ -7,10 +6,8 @@
   --white:#fff;           /* bordes / highlights */
 }
 
-/* -------- Escena general de esta vista -------- */
 body{ background: var(--bg); color: var(--text); }
 
-/* El <main> de esta vista ocupa todo el ancho */
 main.container{
   width:100%;
   max-width:none;
@@ -18,7 +15,7 @@ main.container{
   padding-right: clamp(12px, 3vw, 32px);
 }
 
-/* -------- Encabezado de la página -------- */
+/* Encabezado de la página */
 .page-hero{
   max-width: 1320px;
   margin: 18px auto 20px;
@@ -40,18 +37,15 @@ main.container{
   font-size: clamp(.95rem, .5vw + .75rem, 1.05rem);
 }
 
-/* -------- GRID de tarjetas -------- */
-/* Bloque centrado y ancho grande para que entren 3–4 por fila */
+/* GRID de tarjetas */
 .grid-cards{
   max-width: 1320px;
   margin: 0 auto 32px;
   display: grid;
   gap: 26px;
-  /* celdas mínimas de 280px, el resto se reparte */
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
-/* Fallback/forzado por breakpoints */
 @media (min-width: 1024px){
   .grid-cards{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
@@ -59,10 +53,9 @@ main.container{
   .grid-cards{ grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 
-/* Evita que estilos globales achiquen los hijos */
 .grid-cards > *{ min-width: 0; }
 
-/* -------- Tarjeta -------- */
+/* Tarjeta */
 .card{
   display: block;
   background: var(--panel);
@@ -79,7 +72,7 @@ main.container{
   box-shadow: 0 12px 28px rgba(0,0,0,.12);
 }
 
-/* Imagen superior (misma altura en todas) */
+/* Imagen superior */
 .card img{
   display:block;
   width:100%;
@@ -95,7 +88,7 @@ main.container{
   letter-spacing: .2px;
 }
 
-/* -------- Ajustes responsivos -------- */
+/* Ajustes responsivos */
 @media (max-width: 900px){
   .card img{ height: 150px; }
 }
@@ -104,7 +97,6 @@ main.container{
   .card img{ height: 140px; }
 }
 
-/* --- Centrar título y subtítulo del encabezado --- */
 .page-hero{
   text-align: center;
 }
@@ -115,7 +107,6 @@ main.container{
   margin-top: 0;
 }
 
-/* --- Centrar el nombre de cada tarjeta --- */
 .grid-cards .card h3{
   text-align: center;
   margin: 12px 10px 16px; 

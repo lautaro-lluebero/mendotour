@@ -7,7 +7,6 @@
   --shadow:0 10px 26px rgba(0,0,0,.08);
 }
 
-/* Amplitud en esta vista */
 main.container{
   width:100%;
   max-width:none;
@@ -16,14 +15,14 @@ main.container{
   background: var(--bg);
 }
 
-/* Wrapper centrado y ancho grande */
+/* Wrapper */
 .detail-page{
   max-width: 1320px;           
   margin: 18px auto 32px;
   color: var(--text);
 }
 
-/* -------- Título -------- */
+/* Título */
 .dp-header h1{
   margin: 0 0 12px;
   font-size: clamp(1.8rem, 1.2vw + 1.4rem, 2.6rem);
@@ -31,7 +30,7 @@ main.container{
   text-align: left;            
 }
 
-/* -------- Carrusel de fotos -------- */
+/* Carrusel de fotos */
 .dp-carousel{
   position: relative;
   background: var(--panel);
@@ -80,13 +79,12 @@ main.container{
   font-size: .95rem;
 }
 
-/* Cambios de slide por radio */
 #s1:checked ~ .viewport .track{ transform: translateX(0%); }
 #s2:checked ~ .viewport .track{ transform: translateX(-100%); }
 #s3:checked ~ .viewport .track{ transform: translateX(-200%); }
 #s4:checked ~ .viewport .track{ transform: translateX(-300%); }
 
-/* Flechas por encima y clickeables */
+/* Flechas */
 .dp-carousel { position: relative; }
 .dp-carousel .arrows{
   position:absolute; inset:0;
@@ -105,7 +103,6 @@ main.container{
 }
 .dp-carousel .arrows label:hover{ transform: scale(1.06); background: rgba(0,0,0,.55); }
 
-/* Mostrar solo el par correspondiente al radio activo */
 .dp-carousel .arrows .prev,
 .dp-carousel .arrows .next{ display:none; }
 #s1:checked ~ .arrows .p1, #s1:checked ~ .arrows .n1{ display:inline-flex; }
@@ -126,7 +123,7 @@ main.container{
 #s3:checked ~ .dots label[for="s3"],
 #s4:checked ~ .dots label[for="s4"]{ background:#fff; }
 
-/* -------- Descripción -------- */
+/* Descripción */
 .dp-body{
   margin-top: 18px;
   background: var(--panel);
@@ -147,7 +144,7 @@ main.container{
   padding:.5rem .8rem; text-decoration:none;
 }
 
-/* -------- Lightbox :target con botón cerrar -------- */
+/* Lightbox :target con botón cerrar */
 .dp-overlay{
   position: fixed; inset: 0; z-index: 1000;
   background: rgba(0,0,0,.85);
@@ -167,13 +164,13 @@ main.container{
   display:flex; align-items:center; justify-content:center;
 }
 
-/* -------- Responsive tweaks -------- */
+/* Responsive tweaks */
 @media (max-width: 800px){
   .dp-carousel .slide{ min-height: clamp(220px, 44vh, 420px); }
   .dp-header h1{ text-align:center; }
 }
 
-/* ===== Topbar / botón volver arriba ===== */
+/* Topbar / botón volver arriba */
 .dp-topbar{
   margin: 8px 0 8px;
 }
@@ -187,17 +184,15 @@ main.container{
   box-shadow:0 6px 16px rgba(0,0,0,.08);
 }
 
-/* ===== Carrusel: flechas mejoradas y centradas ===== */
+/*  Carrusel de fotos */
 .dp-carousel{ position:relative; }
 
-/* el contenedor no captura clicks; los labels sí */
 .dp-carousel .arrows{
   position:absolute; inset:0;
   pointer-events:none;
   z-index:3;
 }
 
-/* flechas circulares, centradas verticalmente */
 .dp-carousel .arrows label{
   position:absolute;
   top:50%;
@@ -222,7 +217,6 @@ main.container{
   transform:translateY(-50%) scale(1.06);
 }
 
-/* mostrar solo el par de flechas del slide activo */
 .dp-carousel .arrows .prev,
 .dp-carousel .arrows .next{ display:none; }
 #s1:checked ~ .arrows .p1, #s1:checked ~ .arrows .n1{ display:flex; }
@@ -230,7 +224,6 @@ main.container{
 #s3:checked ~ .arrows .p3, #s3:checked ~ .arrows .n3{ display:flex; }
 #s4:checked ~ .arrows .p4, #s4:checked ~ .arrows .n4{ display:flex; }
 
-/* accesibilidad foco con teclado */
 .dp-carousel .arrows label:focus{
   outline:2px solid #fff; outline-offset:2px;
 }
@@ -243,7 +236,7 @@ main.container{
 }
 
 /* Listas */
-/* ----- Listas dentro del cuerpo del detalle ----- */
+/* Listas dentro del cuerpo del detalle */
 .dp-body h2,
 .dp-body h3{
   margin: 0 0 10px;
@@ -334,9 +327,8 @@ main.container{
 }
 
 .dp-body .cta a{ display:block; margin:2px 0; }
-.dp-body .cta .sep{ display:none; }  /* oculta el punto */
+.dp-body .cta .sep{ display:none; }  
 
-/*Radios totalmente fuera de la escena */
 .dp-carousel input[type="radio"]{
   position: fixed !important;   
   top: -100vh !important;
@@ -352,17 +344,14 @@ main.container{
   white-space: nowrap !important;
 }
 
-/* Desactivar scroll anchoring en el carrusel (evita micro saltos) */
 .dp-carousel{
   overflow-anchor: none;     
   scroll-margin-top: 80px;   
 }
 
-/* Neutraliza el smooth scroll global */
 .dp-carousel, .dp-carousel *{
   scroll-behavior: auto !important;
 }
 
-/* Las flechas siguen recibiendo click (el contenedor no) */
 .dp-carousel .arrows{ pointer-events:none; }
 .dp-carousel .arrows label{ pointer-events:auto; }

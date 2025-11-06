@@ -35,8 +35,7 @@
     attribution: "&copy; OpenStreetMap"
   }).addTo(map);
 
-
-  // ======== RECORRIDO (LÍNEA CELESTE) ========
+  // RECORRIDO (LÍNEA CELESTE)
   const recorrido = [
     [-32.890367438963075, -68.85014837166521],
     [-32.89034942940856, -68.85033615124426],
@@ -58,26 +57,25 @@
   ];
 
   const ruta = L.polyline(recorrido, {
-    color: "#00c8ff",   // CELESTE
+    color: "#00c8ff",   
     weight: 6
   }).addTo(map);
 
   map.fitBounds(ruta.getBounds());
 
+  // MARCADORES 
 
-  // ======== MARCADORES ========
-
-  // Parada del Metrotranvía Belgrano (inicio)
+  // Parada del Metrotranvía Belgrano 
   L.marker([-32.89037715449838, -68.85015907911729])
     .addTo(map)
     .bindPopup("<b>Parada Metrotranvía - Belgrano</b><br>Inicio del recorrido.");
 
-  // Portones del Parque (nuevo marcador que pasaste)
+  // Portones del Parque 
   L.marker([-32.88662393259478, -68.86126312933966])
     .addTo(map)
     .bindPopup("<b>Portones del Parque General San Martín</b><br>Entrada principal del parque.");
 
-  // Fuente de los Continentes (destino final)
+  // Fuente de los Continentes 
   L.marker([-32.88884744109188, -68.86636052682339])
     .addTo(map)
     .bindPopup("<b>Fuente de los Continentes</b><br>Destino del recorrido.");

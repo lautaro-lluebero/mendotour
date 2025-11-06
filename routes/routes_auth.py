@@ -22,7 +22,7 @@ def login():
                 session['username']  = user.username
                 session['rol']       = user.rol
                 flash('¡Sesión iniciada!', 'success')
-                return redirect(url_for('home'))  # <-- SIEMPRE Home
+                return redirect(url_for('home'))  
 
         flash('Email o contraseña incorrectos', 'error')
 
